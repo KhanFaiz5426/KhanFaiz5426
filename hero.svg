@@ -1,0 +1,180 @@
+<svg width="1000" height="800" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Ultra-premium typographic stack -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;700&amp;display=swap');
+      
+      * {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      .hero-title {
+        font-weight: 200;
+        font-size: 140px;
+        fill: #FFFFFF;
+        letter-spacing: -0.06em;
+      }
+
+      .hero-bold {
+        font-weight: 700;
+      }
+      
+      .role-text {
+        font-weight: 500;
+        font-size: 11px;
+        fill: #8892B0;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+      }
+
+      .slash {
+        fill: #2A342F;
+        font-weight: 300;
+      }
+
+      /* Orbital Mechanics Animation */
+      @keyframes orbit {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      
+      /* Depth scaling to simulate 3D rotation */
+      @keyframes depth {
+        0%, 100% { transform: scale(1.1); opacity: 1; }
+        50% { transform: scale(0.6); opacity: 0.2; }
+      }
+      
+      @keyframes subtle-float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-3px); }
+      }
+
+      .orbit-pivot {
+        transform-origin: 650px 400px;
+        animation: orbit 35s linear infinite;
+      }
+      
+      .orbit-satellite {
+        transform-origin: 650px 60px;
+        animation: depth 35s linear infinite;
+      }
+
+      .ambient-glow {
+        animation: subtle-float 12s ease-in-out infinite;
+      }
+    </style>
+    
+    <!-- Microscopic Sensor Grid (Atmosphere) -->
+    <pattern id="micro-grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="0.5" fill="#ffffff" opacity="0.015" />
+    </pattern>
+
+    <!-- Deep Canvas Vignette -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
+      <stop offset="40%" stop-color="#000000" stop-opacity="0" />
+      <stop offset="100%" stop-color="#020302" stop-opacity="0.9" />
+    </radialGradient>
+
+    <!-- Trail fade for the orbital satellite -->
+    <linearGradient id="trail-fade" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00FF9D" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#00FF9D" stop-opacity="0" />
+    </linearGradient>
+
+    <radialGradient id="satellite-flare" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00FF9D" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#00FF9D" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Implied Geometry Gradients -->
+    <!-- These gradients map across the strokes to fade them into pure darkness on the left side -->
+    <linearGradient id="arc-fade-white" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="45%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="65%" stop-color="#ffffff" stop-opacity="0.02" />
+      <stop offset="90%" stop-color="#ffffff" stop-opacity="0.08" />
+    </linearGradient>
+
+    <linearGradient id="arc-fade-strong" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="45%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="90%" stop-color="#ffffff" stop-opacity="0.2" />
+    </linearGradient>
+
+    <!-- Deep Shadow Trench Fade -->
+    <linearGradient id="shadow-fade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="40%" stop-color="#000000" stop-opacity="0" />
+      <stop offset="90%" stop-color="#000000" stop-opacity="0.8" />
+    </linearGradient>
+
+    <radialGradient id="volumetric-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.015" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Base Canvas -->
+  <rect width="1000" height="800" fill="#070908" />
+  
+  <!-- Atmosphere (Grid & Vignette) -->
+  <rect width="1000" height="800" fill="url(#micro-grid)" />
+  <rect width="1000" height="800" fill="url(#vignette)" style="pointer-events: none;" />
+
+  <!-- 
+    THE ORBITAL SATELLITE
+    Positioned BEFORE typography in the DOM so it disappears behind the letters.
+  -->
+  <g class="orbit-pivot">
+    <!-- Trail arc -->
+    <!-- Center is 650,400. Radius is 340. Top is 650,60. Left is 310,400. -->
+    <path d="M 650 60 A 340 340 0 0 0 310 400" fill="none" stroke="url(#trail-fade)" stroke-width="1.2" />
+    
+    <g class="orbit-satellite">
+      <circle cx="650" cy="60" r="40" fill="url(#satellite-flare)" />
+      <circle cx="650" cy="60" r="2.5" fill="#00FF9D" />
+      <circle cx="650" cy="60" r="8" fill="none" stroke="#00FF9D" stroke-width="0.5" stroke-opacity="0.5" />
+    </g>
+  </g>
+
+  <!-- 
+    THE ECLIPSE (Precision Machined Rings)
+    No solid black discs. Constructed entirely of recessed arcs and highlighted rims.
+    The gradients physically cut off the left side, leaving pure implied geometry.
+  -->
+  <g>
+    <!-- Soft volumetric glow to give the rings atmosphere -->
+    <circle cx="650" cy="400" r="300" fill="url(#volumetric-glow)" />
+
+    <!-- Outermost Boundary -->
+    <circle cx="650" cy="400" r="420" fill="none" stroke="url(#arc-fade-white)" stroke-width="0.5" />
+    
+    <!-- Outer Track Groove -->
+    <circle cx="650" cy="400" r="380" fill="none" stroke="url(#arc-fade-white)" stroke-width="1" />
+    
+    <!-- Deep Recessed Layer (The Trench) -->
+    <circle cx="650" cy="400" r="290" fill="none" stroke="url(#shadow-fade)" stroke-width="25" />
+    
+    <!-- Sharp Bevel Edge (Highlight catching light) -->
+    <circle cx="650" cy="400" r="277" fill="none" stroke="url(#arc-fade-strong)" stroke-width="0.5" />
+    
+    <!-- Inner Precision Dial (Calibrated) -->
+    <circle cx="650" cy="400" r="260" fill="none" stroke="url(#arc-fade-white)" stroke-width="1" stroke-dasharray="2 8" />
+    <circle cx="650" cy="400" r="255" fill="none" stroke="url(#arc-fade-white)" stroke-width="0.5" stroke-dasharray="1 18" />
+  </g>
+
+  <!-- Massive, Asymmetrical Typography -->
+  <!-- Left aligned, overlapping the left side of the rings for massive tension. -->
+  <g class="ambient-glow">
+    <text x="120" y="440" class="hero-title">
+      FAIZ <tspan class="hero-bold">KHAN</tspan><tspan fill="#00FF9D">.</tspan>
+    </text>
+    
+    <!-- Precision-aligned editorial roles -->
+    <text x="125" y="500" class="role-text">
+      DETECTION ENGINEER <tspan class="slash" dx="15" dy="-1">/</tspan> <tspan dx="15">BLUE TEAM</tspan> <tspan class="slash" dx="15" dy="-1">/</tspan> <tspan dx="15">THREAT HUNTING</tspan>
+    </text>
+  </g>
+
+  <!-- Minimalist Brand Identification -->
+  <g transform="translate(60, 60)">
+    <text x="0" y="0" font-size="9" fill="#5A6660" letter-spacing="0.2em" font-weight="500">FK // DETECTION</text>
+  </g>
+</svg>

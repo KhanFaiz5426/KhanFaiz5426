@@ -1,0 +1,105 @@
+<svg width="1000" height="260" viewBox="0 0 1000 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;display=swap');
+      
+      * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+      
+      .bg { fill: #070908; }
+      
+      /* Section anchor */
+      .section-title {
+        font-weight: 500; 
+        font-size: 10px; 
+        fill: #8892B0; 
+        letter-spacing: 0.35em; 
+      }
+
+      /* Quiet metadata labels */
+      .brief-label { 
+        font-weight: 500; 
+        font-size: 10px; 
+        fill: #5A6660; 
+        letter-spacing: 0.25em; 
+        text-transform: uppercase;
+      }
+      
+      /* Dominant primary values (Left 70%) */
+      .primary-value { 
+        font-weight: 300; 
+        font-size: 24px; 
+        fill: #FFFFFF; 
+        letter-spacing: -0.01em; 
+      }
+
+      /* Supporting operational values (Right 30%) */
+      .secondary-value {
+        font-weight: 400; 
+        font-size: 16px; 
+        fill: #A0AABF; 
+        letter-spacing: 0.02em; 
+      }
+
+      /* Extreme subtle motion for the ruler */
+      @keyframes sweep {
+        0% { transform: translateX(0px); }
+        100% { transform: translateX(900px); }
+      }
+      .ruler-sweep {
+        animation: sweep 8s cubic-bezier(0.2, 0, 0.2, 1) infinite;
+      }
+    </style>
+
+    <clipPath id="ruler-clip">
+      <!-- Confines the light sweep exactly to the ruler bounds (120 to 880) -->
+      <rect x="120" y="40" width="760" height="10" />
+    </clipPath>
+
+    <!-- The faint shimmer of light reflecting off the ruler edge -->
+    <linearGradient id="flare-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1000" height="260" class="bg" />
+
+  <!-- Section Anchor. Gap reduced to feel highly integrated. -->
+  <text x="120" y="35" class="section-title">CURRENT OPERATIONS</text>
+
+  <!-- The Base Quiet Ruler -->
+  <line x1="120" y1="43" x2="880" y2="43" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1" />
+  
+  <!-- Subtle Motion Shimmer -->
+  <g clip-path="url(#ruler-clip)">
+    <rect x="0" y="43" width="300" height="1" fill="url(#flare-gradient)" class="ruler-sweep" />
+  </g>
+
+  <!-- 
+    MISSION BRIEFING (70/30 Composition)
+  -->
+
+  <!-- Primary Information (71% Width) -->
+  <g transform="translate(120, 100)">
+    <text x="0" y="0" class="brief-label">CURRENT BUILD</text>
+    <text x="0" y="36" class="primary-value">Windows Security Event Analyzer</text>
+  </g>
+
+  <g transform="translate(120, 190)">
+    <text x="0" y="0" class="brief-label">PRIMARY FOCUS</text>
+    <text x="0" y="36" class="primary-value">Detection Engineering</text>
+  </g>
+
+  <!-- Supporting Status (29% Width) -->
+  <g transform="translate(660, 100)">
+    <text x="0" y="0" class="brief-label">STATUS</text>
+    <text x="0" y="36" class="secondary-value">Active</text>
+  </g>
+
+  <g transform="translate(660, 190)">
+    <text x="0" y="0" class="brief-label">NEXT INITIATIVE</text>
+    <text x="0" y="36" class="secondary-value">IOC Detection Platform</text>
+  </g>
+
+</svg>

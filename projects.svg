@@ -1,0 +1,200 @@
+<svg width="1000" height="540" viewBox="0 0 1000 540" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&amp;display=swap');
+      
+      * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+      .bg { fill: #070908; }
+      
+      .section-title {
+        font-weight: 500; 
+        font-size: 10px; 
+        fill: #8892B0; 
+        letter-spacing: 0.35em; 
+      }
+      
+      .proj-title {
+        font-weight: 300; 
+        font-size: 24px; 
+        fill: #FFFFFF; 
+        letter-spacing: -0.01em; 
+      }
+      
+      .proj-desc {
+        font-weight: 400; 
+        font-size: 13px; 
+        fill: #8892B0; 
+      }
+      
+      .proj-meta-label {
+        font-weight: 500; 
+        font-size: 9px; 
+        fill: #5A6660; 
+        letter-spacing: 0.25em; 
+      }
+      
+      .proj-meta-value {
+        font-weight: 400; 
+        font-size: 10px; 
+        fill: #FFFFFF; 
+        letter-spacing: 0.1em; 
+      }
+      
+      .proj-action {
+        font-weight: 400; 
+        font-size: 13px; 
+        fill: #FFFFFF; 
+        letter-spacing: 0.02em; 
+        cursor: pointer;
+      }
+      
+      .arrow {
+        fill: #00FF9D;
+        font-weight: 500;
+      }
+
+      @keyframes sweep {
+        0% { transform: translateX(0px); }
+        100% { transform: translateX(900px); }
+      }
+      .divider-scan {
+        animation: sweep 12s cubic-bezier(0.2, 0, 0.2, 1) infinite;
+      }
+
+      @keyframes crosshair-breathe {
+        0%, 100% { stroke-opacity: 0.1; }
+        50% { stroke-opacity: 0.3; }
+      }
+      .crosshair {
+        animation: crosshair-breathe 8s ease-in-out infinite;
+      }
+    </style>
+    
+    <linearGradient id="flare-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <clipPath id="divider-clip">
+      <rect x="120" y="70" width="760" height="20" />
+    </clipPath>
+
+    <radialGradient id="depth-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.015" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Deep Canvas -->
+  <rect width="1000" height="540" class="bg" />
+  <rect width="1000" height="540" fill="url(#depth-glow)" style="pointer-events: none;" />
+
+  <!-- Section Anchor -->
+  <text x="120" y="45" class="section-title">FLAGSHIP PRODUCTS<tspan fill="#00FF9D">.</tspan></text>
+
+  <!-- Architectural Matrix -->
+  <!-- A perfectly balanced 3-column structural grid -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1">
+    <!-- Horizontal Borders -->
+    <line x1="120" y1="80" x2="880" y2="80" />
+    <line x1="120" y1="460" x2="880" y2="460" />
+    
+    <!-- Vertical Dividers (Creates exactly 3 equal 253px columns) -->
+    <line x1="373" y1="80" x2="373" y2="460" />
+    <line x1="626" y1="80" x2="626" y2="460" />
+  </g>
+
+  <!-- Precision Crosshairs -->
+  <g class="crosshair" stroke="#ffffff" stroke-width="1">
+    <!-- Top Row -->
+    <path d="M 117 80 L 123 80 M 120 77 L 120 83" />
+    <path d="M 370 80 L 376 80 M 373 77 L 373 83" />
+    <path d="M 623 80 L 629 80 M 626 77 L 626 83" />
+    <path d="M 877 80 L 883 80 M 880 77 L 880 83" />
+
+    <!-- Bottom Row -->
+    <path d="M 117 460 L 123 460 M 120 457 L 120 463" />
+    <path d="M 370 460 L 376 460 M 373 457 L 373 463" />
+    <path d="M 623 460 L 629 460 M 626 457 L 626 463" />
+    <path d="M 877 460 L 883 460 M 880 457 L 880 463" />
+  </g>
+
+  <!-- Motion Identity Sweep -->
+  <g clip-path="url(#divider-clip)">
+    <rect x="0" y="80" width="350" height="1" fill="url(#flare-gradient)" class="divider-scan" />
+  </g>
+
+  <!-- 
+    PROJECT 01: Windows Event Analyzer 
+    Column 1 (x: 120 to 373). Interior padding: 30px left.
+  -->
+  <g transform="translate(150, 140)">
+    <text class="proj-title">
+      <tspan x="0" dy="0">Windows Event</tspan>
+      <tspan x="0" dy="28">Analyzer</tspan>
+    </text>
+    
+    <text class="proj-desc">
+      <tspan x="0" dy="75">High-fidelity platform</tspan>
+      <tspan x="0" dy="22">for advanced endpoint</tspan>
+      <tspan x="0" dy="22">telemetry and threat</tspan>
+      <tspan x="0" dy="22">simulation.</tspan>
+    </text>
+    
+    <text x="0" y="175" class="proj-meta-label">CORE TECHNOLOGIES</text>
+    <text x="0" y="195" class="proj-meta-value">PYTHON • SYSMON • KQL</text>
+
+    <text x="0" y="255" class="proj-action">Source <tspan class="arrow">→</tspan></text>
+    <text x="90" y="255" class="proj-action">Portfolio <tspan class="arrow">→</tspan></text>
+  </g>
+
+  <!-- 
+    PROJECT 02: Linux Auth Analyzer 
+    Column 2 (x: 373 to 626). Interior padding: 30px left.
+  -->
+  <g transform="translate(403, 140)">
+    <text class="proj-title">
+      <tspan x="0" dy="0">Linux Auth</tspan>
+      <tspan x="0" dy="28">Analyzer</tspan>
+    </text>
+    
+    <text class="proj-desc">
+      <tspan x="0" dy="75">Automated forensic</tspan>
+      <tspan x="0" dy="22">analysis of SSH logs,</tspan>
+      <tspan x="0" dy="22">auditd trails, and</tspan>
+      <tspan x="0" dy="22">anomalous activity.</tspan>
+    </text>
+    
+    <text x="0" y="175" class="proj-meta-label">CORE TECHNOLOGIES</text>
+    <text x="0" y="195" class="proj-meta-value">RUST • EBPF • SYSTEMD</text>
+
+    <text x="0" y="255" class="proj-action">Source <tspan class="arrow">→</tspan></text>
+    <text x="90" y="255" class="proj-action">Portfolio <tspan class="arrow">→</tspan></text>
+  </g>
+
+  <!-- 
+    PROJECT 03: IOC Detection Engine 
+    Column 3 (x: 626 to 880). Interior padding: 30px left.
+  -->
+  <g transform="translate(656, 140)">
+    <text class="proj-title">
+      <tspan x="0" dy="0">IOC Detection</tspan>
+      <tspan x="0" dy="28">Engine</tspan>
+    </text>
+    
+    <text class="proj-desc">
+      <tspan x="0" dy="75">Enterprise-grade</tspan>
+      <tspan x="0" dy="22">platform for fast</tspan>
+      <tspan x="0" dy="22">behavioral analysis</tspan>
+      <tspan x="0" dy="22">and correlation.</tspan>
+    </text>
+    
+    <text x="0" y="175" class="proj-meta-label">CORE TECHNOLOGIES</text>
+    <text x="0" y="195" class="proj-meta-value">GO • ELASTIC • DOCKER</text>
+
+    <text x="0" y="255" class="proj-action">Source <tspan class="arrow">→</tspan></text>
+    <text x="90" y="255" class="proj-action">Portfolio <tspan class="arrow">→</tspan></text>
+  </g>
+
+</svg>
