@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 260" width="100%">
+  <defs>
+    <pattern id="dotGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="0.5" fill="#9CA3AF" opacity="0.1"/>
+    </pattern>
+    <clipPath id="clip">
+      <rect width="1400" height="260" rx="10"/>
+    </clipPath>
+  </defs>
+  <style>
+    .mono { font-family: 'SF Mono','Cascadia Code','Fira Code',Consolas,'Courier New',monospace; }
+    
+    @keyframes fillBar1 { from { width: 0; } to { width: 828px; } }
+    @keyframes fillBar2 { from { width: 0; } to { width: 782px; } }
+    @keyframes fillBar3 { from { width: 0; } to { width: 736px; } }
+    @keyframes fillBar4 { from { width: 0; } to { width: 736px; } }
+    @keyframes fillBar5 { from { width: 0; } to { width: 644px; } }
+    
+    .bar-1 { width: 828px; animation: fillBar1 4s ease-out forwards; animation-delay: 0s; }
+    .bar-2 { width: 782px; animation: fillBar2 4s ease-out forwards; animation-delay: 0.15s; }
+    .bar-3 { width: 736px; animation: fillBar3 4s ease-out forwards; animation-delay: 0.3s; }
+    .bar-4 { width: 736px; animation: fillBar4 4s ease-out forwards; animation-delay: 0.45s; }
+    .bar-5 { width: 644px; animation: fillBar5 4s ease-out forwards; animation-delay: 0.6s; }
+  </style>
+  <rect width="1400" height="260" rx="10" fill="#0B0F0D"/>
+  <rect width="1400" height="260" rx="10" fill="url(#dotGrid)"/>
+  <rect width="1400" height="260" rx="10" fill="none" stroke="#1C2A24" stroke-width="1.5"/>
+  
+  <text x="40" y="27" class="mono" font-size="10.5" fill="#9CA3AF" letter-spacing="3" opacity="0.5">&#x25C8; DETECTION COVERAGE</text>
+  <line x1="0" y1="42" x2="1400" y2="42" stroke="#1C2A24" stroke-width="0.75"/>
+  
+  <!-- Bar 1 -->
+  <text x="56" y="80" class="mono" font-size="10" fill="#9CA3AF" opacity="0.45" letter-spacing="1.5">WINDOWS</text>
+  <rect x="200" y="76" width="920" height="4" rx="2" fill="#1C2A24"/>
+  <rect x="200" y="76" height="4" rx="2" fill="#00FF9D" opacity="0.55" class="bar-1"/>
+  <text x="1150" y="80" class="mono" font-size="9.5" fill="#9CA3AF" opacity="0.4">90%</text>
+
+  <!-- Bar 2 -->
+  <text x="56" y="116" class="mono" font-size="10" fill="#9CA3AF" opacity="0.45" letter-spacing="1.5">LINUX</text>
+  <rect x="200" y="112" width="920" height="4" rx="2" fill="#1C2A24"/>
+  <rect x="200" y="112" height="4" rx="2" fill="#00FF9D" opacity="0.55" class="bar-2"/>
+  <text x="1150" y="116" class="mono" font-size="9.5" fill="#9CA3AF" opacity="0.4">85%</text>
+
+  <!-- Bar 3 -->
+  <text x="56" y="152" class="mono" font-size="10" fill="#9CA3AF" opacity="0.45" letter-spacing="1.5">SIEM</text>
+  <rect x="200" y="148" width="920" height="4" rx="2" fill="#1C2A24"/>
+  <rect x="200" y="148" height="4" rx="2" fill="#00FF9D" opacity="0.55" class="bar-3"/>
+  <text x="1150" y="152" class="mono" font-size="9.5" fill="#9CA3AF" opacity="0.4">80%</text>
+
+  <!-- Bar 4 -->
+  <text x="56" y="188" class="mono" font-size="10" fill="#9CA3AF" opacity="0.45" letter-spacing="1.5">HUNTING</text>
+  <rect x="200" y="184" width="920" height="4" rx="2" fill="#1C2A24"/>
+  <rect x="200" y="184" height="4" rx="2" fill="#00FF9D" opacity="0.55" class="bar-4"/>
+  <text x="1150" y="188" class="mono" font-size="9.5" fill="#9CA3AF" opacity="0.4">80%</text>
+
+  <!-- Bar 5 -->
+  <text x="56" y="224" class="mono" font-size="10" fill="#9CA3AF" opacity="0.45" letter-spacing="1.5">SOC AUTO</text>
+  <rect x="200" y="220" width="920" height="4" rx="2" fill="#1C2A24"/>
+  <rect x="200" y="220" height="4" rx="2" fill="#00FF9D" opacity="0.55" class="bar-5"/>
+  <text x="1150" y="224" class="mono" font-size="9.5" fill="#9CA3AF" opacity="0.4">70%</text>
+
+</svg>

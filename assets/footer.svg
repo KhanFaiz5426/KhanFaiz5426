@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 110" width="100%">
+  <defs>
+    <pattern id="dotGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="0.5" fill="#9CA3AF" opacity="0.1"/>
+    </pattern>
+    <clipPath id="clip">
+      <rect width="1400" height="110" rx="10"/>
+    </clipPath>
+  </defs>
+  <style>
+    .mono { font-family: 'SF Mono','Cascadia Code','Fira Code',Consolas,'Courier New',monospace; }
+    a { cursor: pointer; }
+    a text:hover { opacity: 0.9; }
+  </style>
+  <rect width="1400" height="110" rx="10" fill="#0B0F0D"/>
+  <rect width="1400" height="110" rx="10" fill="url(#dotGrid)"/>
+  <rect width="1400" height="110" rx="10" fill="none" stroke="#1C2A24" stroke-width="1.5"/>
+  
+  <a href="https://yourportfolio.com" target="_blank">
+      <text x="500" y="38" class="mono" font-size="11" fill="#9CA3AF" opacity="0.55" text-anchor="middle">Portfolio</text>
+  </a>
+  <text x="566" y="38" class="mono" font-size="11" fill="#9CA3AF" opacity="0.55" text-anchor="middle">&#x00B7;</text>
+  <a href="https://linkedin.com/in/yourname" target="_blank">
+      <text x="633" y="38" class="mono" font-size="11" fill="#9CA3AF" opacity="0.55" text-anchor="middle">LinkedIn</text>
+  </a>
+  <text x="700" y="38" class="mono" font-size="11" fill="#9CA3AF" opacity="0.55" text-anchor="middle">&#x00B7;</text>
+  <a href="resume.pdf" target="_blank">
+      <text x="766" y="38" class="mono" font-size="11" fill="#9CA3AF" opacity="0.55" text-anchor="middle">Resume</text>
+  </a>
+  <text x="833" y="38" class="mono" font-size="11" fill="#9CA3AF" opacity="0.55" text-anchor="middle">&#x00B7;</text>
+  <a href="mailto:your@email.com" target="_blank">
+      <text x="900" y="38" class="mono" font-size="11" fill="#9CA3AF" opacity="0.55" text-anchor="middle">Email</text>
+  </a>
+  
+  <polyline points="200,65 500,65 520,52 540,78 560,65 840,65 860,56 880,74 900,65 1200,65" stroke="#00FF9D" stroke-width="1" fill="none" opacity="0.08"/>
+  
+  <line x1="40" y1="85" x2="1360" y2="85" stroke="#1C2A24" stroke-width="0.5" opacity="0.3"/>
+  <text x="40" y="102" class="mono" font-size="8" fill="#9CA3AF" opacity="0.2" letter-spacing="2">&#x25C8; DETECTION ENGINEERING // BLUE TEAM</text>
+  <text x="1360" y="102" class="mono" font-size="8" fill="#9CA3AF" opacity="0.2" letter-spacing="2" text-anchor="end">v2.4</text>
+</svg>

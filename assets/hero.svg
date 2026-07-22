@@ -1,17 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 450" width="100%">
-
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 550" width="100%">
   <defs>
     <pattern id="dotGrid" width="24" height="24" patternUnits="userSpaceOnUse">
-      <circle cx="12" cy="12" r="0.5" fill="#9CA3AF" opacity="0.12"/>
+      <circle cx="12" cy="12" r="0.5" fill="#9CA3AF" opacity="0.1"/>
     </pattern>
-
     <linearGradient id="scanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#00FF9D" stop-opacity="0"/>
-      <stop offset="25%" stop-color="#00FF9D" stop-opacity="0.1"/>
-      <stop offset="75%" stop-color="#00FF9D" stop-opacity="0.1"/>
+      <stop offset="25%" stop-color="#00FF9D" stop-opacity="0.08"/>
+      <stop offset="75%" stop-color="#00FF9D" stop-opacity="0.08"/>
       <stop offset="100%" stop-color="#00FF9D" stop-opacity="0"/>
     </linearGradient>
-
     <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="4" result="blur"/>
       <feMerge>
@@ -19,216 +16,57 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-
-    <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-
-    <clipPath id="containerClip">
-      <rect width="1400" height="450" rx="10"/>
+    <clipPath id="clip">
+      <rect width="1400" height="550" rx="10"/>
     </clipPath>
   </defs>
-
   <style>
-    .mono { font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, 'Courier New', monospace; }
-    .sans { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+    .mono { font-family: 'SF Mono','Cascadia Code','Fira Code',Consolas,'Courier New',monospace; }
+    .sans { font-family: 'Segoe UI',system-ui,-apple-system,sans-serif; }
+    .scan-line { animation: scan 10s linear infinite; }
+    @keyframes scan { from { transform: translateY(-10px); } to { transform: translateY(560px); } }
+    .pulse-dot { animation: pulse 2.5s ease-in-out infinite; }
+    @keyframes pulse { 0% { opacity: 0.55; } 50% { opacity: 0.15; } 100% { opacity: 0.55; } }
+    .status-pulse { animation: statusPulse 2s ease-in-out infinite; }
+    @keyframes statusPulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+    .ring-expand { animation: ringExpand 2s infinite; }
+    @keyframes ringExpand { 0% { r: 7px; opacity: 0.15; } 100% { r: 11px; opacity: 0.02; } }
+    .load-bar { animation: loadBar 5s ease infinite; }
+    @keyframes loadBar { 0% { width: 0px; } 30% { width: 270px; } 40% { width: 300px; } 85% { width: 300px; } 100% { width: 0px; } }
+    .cursor-blink { animation: blink 1s step-end infinite; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
   </style>
-
-  <!-- ══════════════════════════════════════════ -->
-  <!--               BACKGROUND                  -->
-  <!-- ══════════════════════════════════════════ -->
-
-  <rect width="1400" height="450" rx="10" fill="#0B0F0D"/>
-  <rect width="1400" height="450" rx="10" fill="url(#dotGrid)"/>
-
-  <!-- ══════════════════════════════════════════ -->
-  <!--            ANIMATED SCAN LINES            -->
-  <!-- ══════════════════════════════════════════ -->
-
-  <g clip-path="url(#containerClip)">
-    <!-- Horizontal scanning line -->
-    <rect x="0" y="-2" width="1400" height="1.5" fill="url(#scanGrad)">
-      <animateTransform attributeName="transform" type="translate"
-        from="0 -10" to="0 460" dur="8s" repeatCount="indefinite"/>
-    </rect>
-
-    <!-- Vertical sweep line (very subtle) -->
-    <rect x="-1" y="0" width="1" height="450" fill="#00FF9D" opacity="0.025">
-      <animateTransform attributeName="transform" type="translate"
-        from="-10 0" to="1410 0" dur="14s" repeatCount="indefinite"/>
-    </rect>
+  <rect width="1400" height="550" rx="10" fill="#0B0F0D"/>
+  <rect width="1400" height="550" rx="10" fill="url(#dotGrid)"/>
+  <rect width="1400" height="550" rx="10" fill="none" stroke="#1C2A24" stroke-width="1.5"/>
+  <g clip-path="url(#clip)">
+    <rect class="scan-line" width="1400" height="1.5" fill="url(#scanGrad)"/>
   </g>
-
-  <!-- ══════════════════════════════════════════ -->
-  <!--             BORDER + TOP BAR              -->
-  <!-- ══════════════════════════════════════════ -->
-
-  <rect width="1400" height="450" rx="10" fill="none" stroke="#1C2A24" stroke-width="1.5"/>
-  <line x1="1" y1="46" x2="1399" y2="46" stroke="#1C2A24" stroke-width="0.75"/>
-
-  <!-- Header left -->
-  <text x="40" y="29" class="mono" font-size="10" fill="#00FF9D" opacity="0.55">&#x25C8;</text>
-  <text x="58" y="29" class="mono" font-size="10.5" fill="#9CA3AF" letter-spacing="3" opacity="0.55">DETECTION ENGINEERING COMMAND CENTER</text>
-
-  <!-- Header right — window dots -->
+  
+  <text x="40" y="29" class="mono" font-size="10.5" fill="#9CA3AF" letter-spacing="3" opacity="0.5">&#x25C8; SYSTEM ACCESS // DETECTION ENGINEERING</text>
+  <line x1="0" y1="46" x2="1400" y2="46" stroke="#1C2A24" stroke-width="0.75"/>
   <circle cx="1326" cy="24" r="3" fill="#1C2A24"/>
   <circle cx="1343" cy="24" r="3" fill="#1C2A24"/>
-  <circle cx="1360" cy="24" r="3" fill="#00FF9D" opacity="0.55">
-    <animate attributeName="opacity" values="0.55;0.15;0.55" dur="2.5s" repeatCount="indefinite"/>
-  </circle>
-
-  <!-- ══════════════════════════════════════════ -->
-  <!--          LEFT PANEL — SYSTEM STATUS       -->
-  <!-- ══════════════════════════════════════════ -->
-
-  <rect x="40" y="66" width="330" height="275" rx="6" fill="none" stroke="#1C2A24" stroke-width="0.75"/>
-
-  <!-- Panel header -->
-  <text x="56" y="90" class="mono" font-size="9.5" fill="#9CA3AF" letter-spacing="2.5" opacity="0.45">SYSTEM STATUS</text>
-  <line x1="56" y1="100" x2="354" y2="100" stroke="#1C2A24" stroke-width="0.5"/>
-
-  <!-- Online indicator -->
-  <circle cx="68" cy="128" r="4" fill="#00FF9D" filter="url(#glow)">
-    <animate attributeName="opacity" values="1;0.35;1" dur="2s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="68" cy="128" r="8" fill="none" stroke="#00FF9D" stroke-width="0.5" opacity="0.15">
-    <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.15;0.02;0.15" dur="2s" repeatCount="indefinite"/>
-  </circle>
-  <text x="84" y="132" class="mono" font-size="12.5" fill="#00FF9D" letter-spacing="2">ONLINE</text>
-
-  <!-- Loading -->
-  <text x="56" y="170" class="mono" font-size="10" fill="#9CA3AF" opacity="0.4">Loading Detection Modules</text>
-  <rect x="56" y="180" width="282" height="3" rx="1.5" fill="#1C2A24"/>
-  <rect x="56" y="180" width="0" height="3" rx="1.5" fill="#00FF9D" opacity="0.65">
-    <animate attributeName="width" values="0;260;282;282;0"
-      keyTimes="0;0.3;0.4;0.85;1" dur="5s" repeatCount="indefinite"/>
-  </rect>
-
-  <!-- Ready prompt -->
-  <text x="56" y="218" class="mono" font-size="12" fill="#00FF9D" opacity="0.8">&gt; READY</text>
-  <rect x="110" y="207" width="7" height="13" fill="#00FF9D" opacity="0.8">
-    <animate attributeName="opacity" values="0.8;0" keyTimes="0;0.5"
-      dur="1s" calcMode="discrete" repeatCount="indefinite"/>
-  </rect>
-
-  <!-- Status details -->
-  <line x1="56" y1="240" x2="354" y2="240" stroke="#1C2A24" stroke-width="0.5"/>
-
-  <text x="56" y="264" class="mono" font-size="9" fill="#9CA3AF" opacity="0.35" letter-spacing="1">MODULES</text>
-  <text x="156" y="264" class="mono" font-size="9" fill="#9CA3AF" opacity="0.6">LOADED</text>
-
-  <text x="56" y="284" class="mono" font-size="9" fill="#9CA3AF" opacity="0.35" letter-spacing="1">THREATS</text>
-  <text x="156" y="284" class="mono" font-size="9" fill="#9CA3AF" opacity="0.6">0 DETECTED</text>
-
-  <text x="56" y="304" class="mono" font-size="9" fill="#9CA3AF" opacity="0.35" letter-spacing="1">UPTIME</text>
-  <text x="156" y="304" class="mono" font-size="9" fill="#00FF9D" opacity="0.55">99.97%</text>
-
-  <!-- ══════════════════════════════════════════ -->
-  <!--          CENTER — IDENTITY                -->
-  <!-- ══════════════════════════════════════════ -->
-
-  <!-- Name -->
-  <text x="430" y="148" class="sans" font-size="46" fill="#EDEDED" font-weight="600" letter-spacing="4">FAIZ KHAN</text>
-
-  <!-- Accent underline -->
-  <rect x="430" y="158" width="85" height="2" rx="1" fill="#00FF9D" opacity="0.55" filter="url(#softGlow)"/>
-
-  <!-- Titles -->
-  <text x="430" y="195" class="mono" font-size="15" fill="#D1D5DB" letter-spacing="0.5">Detection Engineer</text>
-  <text x="430" y="218" class="mono" font-size="13" fill="#9CA3AF" opacity="0.65">Python Security Developer</text>
-  <text x="430" y="241" class="mono" font-size="13" fill="#9CA3AF" opacity="0.65">Blue Team</text>
-
-  <!-- Tagline -->
-  <text x="430" y="283" class="mono" font-size="11" fill="#6B7280" letter-spacing="0.3">Building modern detection engineering software.</text>
-
-  <!-- ══════════════════════════════════════════ -->
-  <!--        RIGHT — DECORATIVE ELEMENTS        -->
-  <!-- ══════════════════════════════════════════ -->
-
-  <!-- Vertical accent bar -->
-  <rect x="1340" y="76" width="1.5" height="250" rx="0.75" fill="#1C2A24" opacity="0.4"/>
-  <rect x="1340" y="120" width="1.5" height="50" rx="0.75" fill="#00FF9D" opacity="0.15">
-    <animate attributeName="y" values="100;200;100" dur="6s" repeatCount="indefinite"/>
-  </rect>
-  <circle cx="1341" cy="76" r="1.5" fill="#1C2A24" opacity="0.4"/>
-  <circle cx="1341" cy="326" r="1.5" fill="#1C2A24" opacity="0.4"/>
-
-  <!-- Telemetry activity bars -->
-  <text x="1130" y="140" class="mono" font-size="7.5" fill="#9CA3AF" opacity="0.15" letter-spacing="2">TELEMETRY</text>
-
-  <g opacity="0.08" transform="translate(1130, 152)">
-    <rect x="0" width="3" rx="1" fill="#00FF9D" y="28" height="12">
-      <animate attributeName="height" values="12;28;18;12" dur="3.8s" repeatCount="indefinite"/>
-      <animate attributeName="y" values="28;12;22;28" dur="3.8s" repeatCount="indefinite"/>
-    </rect>
-    <rect x="6" width="3" rx="1" fill="#00FF9D" y="15" height="25">
-      <animate attributeName="height" values="25;10;30;25" dur="3.2s" repeatCount="indefinite"/>
-      <animate attributeName="y" values="15;30;10;15" dur="3.2s" repeatCount="indefinite"/>
-    </rect>
-    <rect x="12" width="3" rx="1" fill="#00FF9D" y="22" height="18">
-      <animate attributeName="height" values="18;35;14;18" dur="4.1s" repeatCount="indefinite"/>
-      <animate attributeName="y" values="22;5;26;22" dur="4.1s" repeatCount="indefinite"/>
-    </rect>
-    <rect x="18" width="3" rx="1" fill="#00FF9D" y="10" height="30">
-      <animate attributeName="height" values="30;15;22;30" dur="2.9s" repeatCount="indefinite"/>
-      <animate attributeName="y" values="10;25;18;10" dur="2.9s" repeatCount="indefinite"/>
-    </rect>
-    <rect x="24" width="3" rx="1" fill="#00FF9D" y="18" height="22">
-      <animate attributeName="height" values="22;32;10;22" dur="3.5s" repeatCount="indefinite"/>
-      <animate attributeName="y" values="18;8;30;18" dur="3.5s" repeatCount="indefinite"/>
-    </rect>
-    <rect x="30" width="3" rx="1" fill="#00FF9D" y="25" height="15">
-      <animate attributeName="height" values="15;20;30;15" dur="4.4s" repeatCount="indefinite"/>
-      <animate attributeName="y" values="25;20;10;25" dur="4.4s" repeatCount="indefinite"/>
-    </rect>
-    <rect x="36" width="3" rx="1" fill="#00FF9D" y="20" height="20">
-      <animate attributeName="height" values="20;8;26;20" dur="3.0s" repeatCount="indefinite"/>
-      <animate attributeName="y" values="20;32;14;20" dur="3.0s" repeatCount="indefinite"/>
-    </rect>
-  </g>
-
-  <!-- ══════════════════════════════════════════ -->
-  <!--              SEPARATOR                    -->
-  <!-- ══════════════════════════════════════════ -->
-
-  <line x1="40" y1="355" x2="1360" y2="355" stroke="#1C2A24" stroke-width="0.5"/>
-
-  <!-- ══════════════════════════════════════════ -->
-  <!--             TECHNOLOGY PILLS              -->
-  <!-- ══════════════════════════════════════════ -->
-
-  <!-- Windows Detection -->
-  <rect x="40" y="372" width="140" height="26" rx="13" fill="none" stroke="#1C2A24" stroke-width="0.75"/>
-  <text x="110" y="389" class="mono" font-size="10" fill="#9CA3AF" text-anchor="middle" opacity="0.6">Windows Detection</text>
-
-  <!-- Linux Detection -->
-  <rect x="192" y="372" width="126" height="26" rx="13" fill="none" stroke="#1C2A24" stroke-width="0.75"/>
-  <text x="255" y="389" class="mono" font-size="10" fill="#9CA3AF" text-anchor="middle" opacity="0.6">Linux Detection</text>
-
-  <!-- SIEM -->
-  <rect x="330" y="372" width="58" height="26" rx="13" fill="none" stroke="#1C2A24" stroke-width="0.75"/>
-  <text x="359" y="389" class="mono" font-size="10" fill="#9CA3AF" text-anchor="middle" opacity="0.6">SIEM</text>
-
-  <!-- Threat Hunting -->
-  <rect x="400" y="372" width="122" height="26" rx="13" fill="none" stroke="#1C2A24" stroke-width="0.75"/>
-  <text x="461" y="389" class="mono" font-size="10" fill="#9CA3AF" text-anchor="middle" opacity="0.6">Threat Hunting</text>
-
-  <!-- SOC Automation -->
-  <rect x="534" y="372" width="124" height="26" rx="13" fill="none" stroke="#1C2A24" stroke-width="0.75"/>
-  <text x="596" y="389" class="mono" font-size="10" fill="#9CA3AF" text-anchor="middle" opacity="0.6">SOC Automation</text>
-
-  <!-- ══════════════════════════════════════════ -->
-  <!--              BOTTOM BAR                   -->
-  <!-- ══════════════════════════════════════════ -->
-
-  <line x1="0" y1="420" x2="1400" y2="420" stroke="#1C2A24" stroke-width="0.5" opacity="0.35"/>
-
-  <text x="40" y="439" class="mono" font-size="8" fill="#9CA3AF" opacity="0.2" letter-spacing="2">&#x25C8; DETECTION ENGINEERING &#x00B7; BLUE TEAM &#x00B7; SECURITY AUTOMATION</text>
-  <text x="1360" y="439" class="mono" font-size="8" fill="#9CA3AF" opacity="0.2" text-anchor="end" letter-spacing="0.5">v2.4</text>
-
+  <circle cx="1360" cy="24" r="3" fill="#00FF9D" class="pulse-dot"/>
+  
+  <text x="700" y="200" class="sans" font-size="52" font-weight="600" letter-spacing="6" fill="#EDEDED" text-anchor="middle">FAIZ KHAN</text>
+  <rect x="660" y="214" width="80" height="2" rx="1" fill="#00FF9D" opacity="0.55" filter="url(#glow)"/>
+  <text x="700" y="255" class="mono" font-size="15" fill="#D1D5DB" letter-spacing="0.5" text-anchor="middle">Detection Engineer</text>
+  <text x="700" y="280" class="mono" font-size="13" fill="#9CA3AF" opacity="0.65" text-anchor="middle">Python Security Developer</text>
+  <text x="700" y="305" class="mono" font-size="13" fill="#9CA3AF" opacity="0.65" text-anchor="middle">Blue Team</text>
+  <text x="700" y="352" class="mono" font-size="11.5" fill="#6B7280" letter-spacing="0.3" text-anchor="middle">Building modern detection engineering software.</text>
+  
+  <circle cx="52" cy="442" r="7" fill="none" stroke="#00FF9D" stroke-width="0.5" class="ring-expand"/>
+  <circle cx="52" cy="442" r="3.5" fill="#00FF9D" class="status-pulse"/>
+  <text x="66" y="446" class="mono" font-size="9" fill="#00FF9D" opacity="0.6" letter-spacing="1.5">SYSTEM ACTIVE</text>
+  
+  <rect x="550" y="440" width="300" height="3" rx="1.5" fill="#1C2A24"/>
+  <rect x="550" y="440" width="0" height="3" rx="1.5" fill="#00FF9D" opacity="0.6" class="load-bar"/>
+  
+  <text x="1300" y="446" class="mono" font-size="9.5" fill="#00FF9D" opacity="0.7" text-anchor="end">&gt; READY</text>
+  <rect x="1308" y="437" width="6" height="12" fill="#00FF9D" class="cursor-blink"/>
+  
+  <line x1="0" y1="500" x2="1400" y2="500" stroke="#1C2A24" stroke-width="0.5"/>
+  <text x="40" y="530" class="mono" font-size="8" fill="#9CA3AF" opacity="0.2" letter-spacing="2">&#x25C8; IDENTIFICATION VERIFIED</text>
+  <text x="1360" y="530" class="mono" font-size="8" fill="#9CA3AF" opacity="0.2" letter-spacing="2" text-anchor="end">FK-2024</text>
 </svg>
