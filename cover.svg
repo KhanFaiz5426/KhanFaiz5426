@@ -7,7 +7,7 @@
       .serif { font-family: 'Instrument Serif', Georgia, serif; }
       .mono { font-family: 'JetBrains Mono', monospace; }
 
-      /* The single structural animation */
+      /* The structural line drawing itself */
       @keyframes draw-structure {
         0% { stroke-dashoffset: 400; opacity: 0; }
         20% { opacity: 0.15; }
@@ -19,50 +19,134 @@
         animation: draw-structure 40s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
       }
 
-      /* The Single Travelling Highlight (Telemetry pulse) */
-      @keyframes highlight-travel {
-        0% { stroke-dashoffset: 3500; }
+      /* 
+         THE FRACTURE ANIMATION
+         The upper right edge remains completely stable for several seconds,
+         fractures (translates and fades), and then instantly reforms.
+      */
+      @keyframes shield-fracture {
+        0%, 75% { transform: translate(0, 0); opacity: 1; }
+        78% { transform: translate(15px, -15px); opacity: 0; }
+        88% { transform: translate(0, 0); opacity: 0; }
+        90% { opacity: 1; }
+        100% { opacity: 1; }
+      }
+      .fracture-part {
+        animation: shield-fracture 16s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+      }
+
+      /* 
+         THE PARTICLES ANIMATION
+         Fragments detach and dissolve as the shield edge fractures.
+      */
+      @keyframes particle-dissolve {
+        0%, 75% { opacity: 0; transform: translate(0, 0) scale(1); }
+        77% { opacity: 0.8; transform: translate(10px, -10px) scale(1); }
+        82% { opacity: 0; transform: translate(30px, -30px) scale(0); }
+        100% { opacity: 0; }
+      }
+      .particle {
+        fill: #FFFFFF;
+        fill-opacity: 0.15;
+        animation: particle-dissolve 16s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+      }
+
+      /* 
+         THE TELEMETRY PULSE
+         A single tiny pulse travelling through the network edges.
+      */
+      @keyframes telemetry-pulse {
+        0% { stroke-dashoffset: 1500; }
         100% { stroke-dashoffset: 0; }
       }
-      .dragon-highlight {
-        fill: none;
-        stroke: #7A3B3B; /* Elegant, muted burgundy */
+      .telemetry {
+        stroke: #7A3B3B; /* Muted Burgundy Accent */
         stroke-width: 1.5;
-        stroke-linecap: round;
-        stroke-dasharray: 30 3500; /* One tiny pulse of light, massive gap */
-        animation: highlight-travel 18s linear infinite;
+        stroke-dasharray: 40 1500;
+        fill: none;
+        animation: telemetry-pulse 15s linear infinite;
       }
 
-      /* The Dragon Base (Static, 15% opacity for perfect visual prominence) */
-      .dragon-base {
-        fill: none;
+      /* Base styling for the wireframe shield */
+      .shield-line {
         stroke: #FFFFFF;
-        stroke-opacity: 0.15;
-        stroke-width: 1.0;
+        stroke-opacity: 0.08;
+        stroke-width: 0.5;
+        fill: none;
+      }
+      .shield-node {
+        fill: #FFFFFF;
+        fill-opacity: 0.2;
       }
     </style>
-
-    <!-- 
-      The Recognizable Guardian Silhouette.
-      A single continuous stroke forming a traditional serpentine dragon wrapping the canvas.
-      Features: Sweeping tail, belly curve, arched neck, sharp swept-back horn, distinct snout, and jaw whisker.
-    -->
-    <path id="dragon-silhouette" d="M 620 120 C 450 40, 100 40, 100 200 C 100 350, 300 380, 440 380 C 700 380, 800 350, 800 250 C 800 180, 750 130, 770 100 C 790 70, 830 60, 850 40 C 830 40, 790 50, 750 70 C 730 70, 680 80, 660 100 C 680 110, 700 120, 720 120 C 720 140, 680 160, 640 180" />
   </defs>
 
-  <!-- Solid, deep matte background. No gradients. No glow. -->
+  <!-- Solid, deep matte background. -->
   <rect width="880" height="400" fill="#0A0A0C"/>
 
   <!-- ═══════════════════════════════════════════════════════════
-       THE GUARDIAN SILHOUETTE
-       Sits entirely behind the typography. Completely static.
+       THE WIREFRAME SHIELD (Signature Identity)
+       Sits completely behind the typography.
+       Centered exactly on the structural line (X=340).
        ═══════════════════════════════════════════════════════════ -->
   <g>
-    <!-- The elegant, frozen dragon stroke (15% opacity) -->
-    <use href="#dragon-silhouette" class="dragon-base" />
-    
-    <!-- The single travelling highlight (telemetry / electrical current) -->
-    <use href="#dragon-silhouette" class="dragon-highlight" />
+    <!-- BASE NETWORK (Static Lines) -->
+    <path class="shield-line" d="
+      M 200 80 L 340 100 
+      M 160 200 L 200 80 
+      M 160 200 L 340 360 
+      M 340 360 L 520 200 
+      M 260 140 L 200 80 
+      M 260 140 L 160 200 
+      M 260 140 L 340 160 
+      M 260 140 L 340 260 
+      M 420 140 L 340 160 
+      M 420 140 L 340 260 
+      M 340 260 L 340 360 
+      M 340 260 L 160 200 
+      M 340 260 L 520 200 
+      M 340 160 L 340 100 
+      M 160 200 L 340 160 
+      M 520 200 L 340 160 
+      M 200 80 L 340 160
+    " />
+
+    <!-- FRACTURING SEGMENT (Upper-Right Edge) -->
+    <g class="fracture-part">
+      <!-- Network lines that detach -->
+      <path class="shield-line" d="
+        M 340 100 L 480 80 
+        M 480 80 L 520 200 
+        M 420 140 L 480 80
+      " />
+      <!-- The detaching node -->
+      <circle cx="480" cy="80" r="1.5" class="shield-node" />
+    </g>
+
+    <!-- DISSOLVING PARTICLES -->
+    <g>
+      <polygon points="480,80 490,75 485,90" class="particle" style="animation-delay: 0.1s" />
+      <polygon points="450,110 465,105 455,120" class="particle" style="animation-delay: 0s" />
+      <circle cx="430" cy="100" r="1.5" class="particle" style="animation-delay: 0.2s" />
+      <circle cx="470" cy="130" r="1" class="particle" style="animation-delay: 0.15s" />
+      <polygon points="400,90 410,85 405,100" class="particle" style="animation-delay: 0.05s" />
+    </g>
+
+    <!-- STATIC NODES (The rest of the vertices) -->
+    <g class="shield-node">
+      <circle cx="200" cy="80" r="1.5" />
+      <circle cx="340" cy="100" r="1.5" />
+      <circle cx="520" cy="200" r="1.5" />
+      <circle cx="340" cy="360" r="1.5" />
+      <circle cx="160" cy="200" r="1.5" />
+      <circle cx="340" cy="160" r="1.5" />
+      <circle cx="260" cy="140" r="1.5" />
+      <circle cx="420" cy="140" r="1.5" />
+      <circle cx="340" cy="260" r="1.5" />
+    </g>
+
+    <!-- TELEMETRY PULSE (Travelling along the network) -->
+    <path class="telemetry" d="M 160 200 L 260 140 L 340 160 L 420 140 L 520 200 L 340 260 L 340 360" />
   </g>
 
   <!-- ═══════════════════════════════════════════════════════════
@@ -98,7 +182,7 @@
     <!-- The Authentic Statement (Perfectly baseline-aligned with the Name) -->
     <text x="0" y="220" font-size="14" font-weight="300" fill="#D4D4D8" letter-spacing="0.01em">Building systems for threat detection.</text>
 
-    <!-- Essential Contact Information (Email only, as requested) -->
+    <!-- Essential Contact Information (Email only) -->
     <text x="0" y="260" class="mono" font-size="10" fill="#52525B" letter-spacing="0.05em">khanfaizmumbai@gmail.com</text>
   </g>
 
