@@ -1,109 +1,53 @@
-<svg width="1000" height="180" viewBox="0 0 1000 180" xmlns="http://www.w3.org/2000/svg">
+<svg width="1000" height="160" viewBox="0 0 1000 160" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap');
-      
       * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
-      
-      .bg { fill: #0A0A0A; }
-      
-      .closing-text {
-        font-weight: 300;
-        font-size: 20px;
-        fill: #FFFFFF;
-        letter-spacing: 0.15em;
-      }
+      .closing { font-weight: 300; font-size: 22px; fill: #FAFAFA; letter-spacing: 0.12em; }
+      .accent { fill: #10B981; }
+      .link { font-weight: 500; font-size: 10px; fill: #52525B; letter-spacing: 0.12em; text-transform: uppercase; }
+      .brand { font-weight: 500; font-size: 8px; fill: #27272A; letter-spacing: 0.3em; }
+      .line { stroke: #FFFFFF; stroke-opacity: 0.05; stroke-width: 1; }
+      a { cursor: pointer; }
 
-      .closing-accent {
-        fill: #10B981;
-      }
-
-      .social-label {
-        font-weight: 500;
-        font-size: 9px;
-        fill: #52525B;
-        letter-spacing: 0.25em;
-        text-transform: uppercase;
-      }
-
-      .social-link {
-        font-weight: 400;
-        font-size: 11px;
-        fill: #3F3F46;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        cursor: pointer;
-      }
-
-      .social-link:hover {
-        fill: #71717A;
-      }
-
-      .footer-brand {
-        font-weight: 500;
-        font-size: 8px;
-        fill: #27272A;
-        letter-spacing: 0.3em;
-      }
-
-      .divider-line {
-        stroke: #FFFFFF;
-        stroke-opacity: 0.04;
-        stroke-width: 1;
-      }
-
-      /* Typing dots animation */
-      @keyframes dot1 {
-        0%, 10% { opacity: 0; }
-        15%, 75% { opacity: 1; }
-        85%, 100% { opacity: 0; }
-      }
-      @keyframes dot2 {
-        0%, 30% { opacity: 0; }
-        35%, 75% { opacity: 1; }
-        85%, 100% { opacity: 0; }
-      }
-      @keyframes dot3 {
-        0%, 50% { opacity: 0; }
-        55%, 75% { opacity: 1; }
-        85%, 100% { opacity: 0; }
-      }
-
-      .dot-1 { animation: dot1 3s infinite; }
-      .dot-2 { animation: dot2 3s infinite; }
-      .dot-3 { animation: dot3 3s infinite; }
+      @keyframes blink1 { 0%,10%{opacity:0} 15%,75%{opacity:1} 85%,100%{opacity:0} }
+      @keyframes blink2 { 0%,30%{opacity:0} 35%,75%{opacity:1} 85%,100%{opacity:0} }
+      @keyframes blink3 { 0%,50%{opacity:0} 55%,75%{opacity:1} 85%,100%{opacity:0} }
+      .d1 { animation: blink1 3s infinite; }
+      .d2 { animation: blink2 3s infinite; }
+      .d3 { animation: blink3 3s infinite; }
     </style>
   </defs>
 
-  <rect width="1000" height="180" class="bg" />
+  <rect width="1000" height="160" fill="#09090B"/>
 
-  <!-- Top divider -->
-  <line x1="120" y1="14" x2="880" y2="14" class="divider-line" />
+  <!-- Divider -->
+  <line x1="120" y1="15" x2="880" y2="15" class="line"/>
 
-  <!-- Closing statement -->
-  <g transform="translate(120, 70)">
-    <text x="0" y="0" class="closing-text">
-      BUILDING DEFENSE<tspan class="closing-accent">.</tspan><tspan class="closing-accent dot-1">.</tspan><tspan class="closing-accent dot-2">.</tspan><tspan class="closing-accent dot-3">.</tspan>
-    </text>
+  <!-- Closing -->
+  <text x="120" y="65" class="closing">
+    BUILDING DEFENSE<tspan class="accent">.</tspan><tspan class="accent d1">.</tspan><tspan class="accent d2">.</tspan><tspan class="accent d3">.</tspan>
+  </text>
+
+  <!-- Links -->
+  <g transform="translate(120, 110)">
+    <a href="https://github.com/KhanFaiz5426" target="_blank">
+      <text x="0" y="0" class="link">GitHub</text>
+    </a>
+    <text x="62" y="0" fill="#27272A">·</text>
+    <a href="https://www.linkedin.com/in/faiz-khan-b03a2a3a7" target="_blank">
+      <text x="78" y="0" class="link">LinkedIn</text>
+    </a>
+    <text x="148" y="0" fill="#27272A">·</text>
+    <a href="mailto:khanfaizmumbai@gmail.com">
+      <text x="164" y="0" class="link">Email</text>
+    </a>
+    <text x="210" y="0" fill="#27272A">·</text>
+    <a href="#" target="_blank">
+      <text x="226" y="0" class="link">Resume</text>
+    </a>
   </g>
 
-  <!-- Social links -->
-  <g transform="translate(120, 120)">
-    <text x="0" y="0" class="social-label">CONNECT</text>
-    
-    <g transform="translate(0, 25)">
-      <text x="0" y="0" class="social-link">GitHub</text>
-      <text x="60" y="0" fill="#27272A">·</text>
-      <text x="75" y="0" class="social-link">LinkedIn</text>
-      <text x="140" y="0" fill="#27272A">·</text>
-      <text x="155" y="0" class="social-link">Email</text>
-      <text x="205" y="0" fill="#27272A">·</text>
-      <text x="220" y="0" class="social-link">Resume</text>
-    </g>
-  </g>
-
-  <!-- Bottom brand -->
-  <g transform="translate(880, 155)" text-anchor="end">
-    <text x="0" y="0" class="footer-brand">FK · 2024</text>
-  </g>
+  <!-- Brand -->
+  <text x="880" y="145" text-anchor="end" class="brand">FK · 2024</text>
 </svg>

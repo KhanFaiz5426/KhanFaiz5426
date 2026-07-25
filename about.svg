@@ -1,157 +1,91 @@
-<svg width="1000" height="380" viewBox="0 0 1000 380" xmlns="http://www.w3.org/2000/svg">
+<svg width="1000" height="320" viewBox="0 0 1000 320" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap');
-      
       * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
-      
-      .bg { fill: #0A0A0A; }
-      
-      .section-label {
-        font-weight: 500;
-        font-size: 10px;
-        fill: #10B981;
-        letter-spacing: 0.3em;
-        text-transform: uppercase;
-      }
-
-      .about-text {
-        font-weight: 300;
-        font-size: 16px;
-        fill: #A1A1AA;
-        letter-spacing: -0.01em;
-        line-height: 1.7;
-      }
-
-      .about-text-bold {
-        font-weight: 500;
-        fill: #E4E4E7;
-      }
-
-      .focus-label {
-        font-weight: 500;
-        font-size: 9px;
-        fill: #52525B;
-        letter-spacing: 0.25em;
-        text-transform: uppercase;
-      }
-
-      .focus-value {
-        font-weight: 400;
-        font-size: 13px;
-        fill: #D4D4D8;
-        letter-spacing: 0.02em;
-      }
-
-      .focus-value-accent {
-        font-weight: 500;
-        fill: #10B981;
-      }
-
-      .tech-pill {
-        font-weight: 400;
-        font-size: 11px;
-        fill: #A1A1AA;
-        letter-spacing: 0.05em;
-      }
-
-      .divider-line {
-        stroke: #FFFFFF;
-        stroke-opacity: 0.04;
-        stroke-width: 1;
-      }
-
-      /* Subtle scan animation */
-      @keyframes scan {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(760px); }
-      }
-      .scan-line {
-        animation: 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-      }
-
-      /* Clip for scan */
+      .label { font-weight: 500; font-size: 10px; fill: #10B981; letter-spacing: 0.3em; text-transform: uppercase; }
+      .body { font-weight: 300; font-size: 15px; fill: #A1A1AA; line-height: 1.8; }
+      .body b { font-weight: 500; fill: #E4E4E7; }
+      .meta-label { font-weight: 500; font-size: 9px; fill: #52525B; letter-spacing: 0.25em; text-transform: uppercase; }
+      .meta-val { font-weight: 400; font-size: 13px; fill: #A1A1AA; }
+      .meta-accent { font-weight: 500; fill: #10B981; }
+      .pill { font-weight: 400; font-size: 11px; fill: #A1A1AA; }
+      .line { stroke: #FFFFFF; stroke-opacity: 0.05; stroke-width: 1; }
+      a { cursor: pointer; }
     </style>
 
-    <clipPath id="scan-clip">
-      <rect x="120" y="10" width="760" height="8" />
-    </clipPath>
-
-    <linearGradient id="scan-flare" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#10B981" stop-opacity="0" />
-      <stop offset="50%" stop-color="#10B981" stop-opacity="0.2" />
-      <stop offset="100%" stop-color="#10B981" stop-opacity="0" />
+    <linearGradient id="accent-scan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#10B981" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
     </linearGradient>
+    <clipPath id="scan-c"><rect x="120" y="12" width="760" height="6"/></clipPath>
   </defs>
 
-  <rect width="1000" height="380" class="bg" />
+  <rect width="1000" height="320" fill="#09090B"/>
 
-  <!-- Top divider -->
-  <line x1="120" y1="14" x2="880" y2="14" class="divider-line" />
-  
-  <!-- Scan animation on divider -->
-  <g clip-path="url(#scan-clip)">
-    <rect x="0" y="14" width="200" height="1" fill="url(#scan-flare)" class="scan-line" />
+  <!-- Divider -->
+  <line x1="120" y1="15" x2="880" y2="15" class="line"/>
+  <g clip-path="url(#scan-c)">
+    <rect x="120" y="15" width="120" height="1" fill="url(#accent-scan)">
+      <animateTransform attributeName="transform" type="translate" from="0,0" to="760,0" dur="8s" repeatCount="indefinite"/>
+    </rect>
   </g>
 
   <!-- Section label -->
-  <text x="120" y="55" class="section-label">ABOUT</text>
+  <text x="120" y="55" class="label">ABOUT</text>
 
-  <!-- About text -->
-  <g transform="translate(120, 90)">
-    <text class="about-text">
-      <tspan x="0" dy="0">Security engineer focused on <tspan class="about-text-bold">detection engineering</tspan>,</tspan>
-      <tspan x="0" dy="28"><tspan class="about-text-bold">threat hunting</tspan>, and building tools that protect</tspan>
-      <tspan x="0" dy="28">endpoints at scale. I work across the detection</tspan>
-      <tspan x="0" dy="28">lifecycle—from log analysis to rule creation to</tspan>
-      <tspan x="0" dy="28">automated response.</tspan>
+  <!-- Body text -->
+  <text x="120" y="95" class="body">
+    <tspan x="120" dy="0">Security engineer focused on</tspan>
+    <tspan font-weight="500" fill="#E4E4E7">detection engineering</tspan><tspan>,</tspan>
+    <tspan font-weight="500" fill="#E4E4E7"> threat hunting</tspan><tspan>,</tspan>
+    <tspan> and building tools that protect</tspan>
+    <tspan x="120" dy="26">endpoints at scale. I work across the detection lifecycle — from log</tspan>
+    <tspan x="120" dy="26">ingestion and parsing to rule creation, tuning, and automated response.</tspan>
+  </text>
+
+  <!-- Focus areas -->
+  <g transform="translate(120, 210)">
+    <text x="0" y="0" class="meta-label">FOCUS AREAS</text>
+    <text x="0" y="24" class="meta-val">
+      <tspan class="meta-accent">Detection Engineering</tspan>
+      <tspan fill="#3F3F46"> — </tspan>Threat Hunting
+      <tspan fill="#3F3F46"> — </tspan>Security Automation
+      <tspan fill="#3F3F46"> — </tspan>SOC Operations
+      <tspan fill="#3F3F46"> — </tspan>Incident Response
     </text>
   </g>
 
-  <!-- Focus Areas -->
-  <g transform="translate(120, 245)">
-    <text x="0" y="0" class="focus-label">FOCUS AREAS</text>
-    <text x="0" y="28" class="focus-value">
-      <tspan class="focus-value-accent">Detection Engineering</tspan>
-      <tspan fill="#3F3F46"> — </tspan>
-      <tspan>Threat Hunting</tspan>
-      <tspan fill="#3F3F46"> — </tspan>
-      <tspan>Security Automation</tspan>
-      <tspan fill="#3F3F46"> — </tspan>
-      <tspan>SOC Operations</tspan>
-    </text>
-  </g>
-
-  <!-- Tech Stack Row -->
-  <g transform="translate(120, 305)">
-    <text x="0" y="0" class="focus-label">PRIMARY STACK</text>
-    <g transform="translate(0, 25)">
-      <!-- Tech pills with separators -->
-      <text x="0" y="0" class="tech-pill">Python</text>
-      <text x="55" y="0" fill="#27272A">·</text>
-      <text x="72" y="0" class="tech-pill">Splunk</text>
-      <text x="125" y="0" fill="#27272A">·</text>
-      <text x="142" y="0" class="tech-pill">Elastic</text>
-      <text x="193" y="0" fill="#27272A">·</text>
-      <text x="210" y="0" class="tech-pill">Sigma</text>
-      <text x="251" y="0" fill="#27272A">·</text>
-      <text x="268" y="0" class="tech-pill">YARA</text>
-      <text x="309" y="0" fill="#27272A">·</text>
-      <text x="326" y="0" class="tech-pill">Sysmon</text>
-      <text x="383" y="0" fill="#27272A">·</text>
-      <text x="400" y="0" class="tech-pill">FastAPI</text>
-      <text x="458" y="0" fill="#27272A">·</text>
-      <text x="475" y="0" class="tech-pill">Docker</text>
-      <text x="530" y="0" fill="#27272A">·</text>
-      <text x="547" y="0" class="tech-pill">Git</text>
+  <!-- Tech stack -->
+  <g transform="translate(120, 268)">
+    <text x="0" y="0" class="meta-label">PRIMARY STACK</text>
+    <g transform="translate(0, 22)">
+      <text class="pill">Python</text>
+      <text x="58" fill="#3F3F46">·</text>
+      <text x="76" class="pill">Splunk</text>
+      <text x="133" fill="#3F3F46">·</text>
+      <text x="151" class="pill">Elastic</text>
+      <text x="206" fill="#3F3F46">·</text>
+      <text x="224" class="pill">Sigma</text>
+      <text x="269" fill="#3F3F46">·</text>
+      <text x="287" class="pill">YARA</text>
+      <text x="330" fill="#3F3F46">·</text>
+      <text x="348" class="pill">Sysmon</text>
+      <text x="410" fill="#3F3F46">·</text>
+      <text x="428" class="pill">FastAPI</text>
+      <text x="490" fill="#3F3F46">·</text>
+      <text x="508" class="pill">Docker</text>
+      <text x="568" fill="#3F3F46">·</text>
+      <text x="586" class="pill">Git</text>
     </g>
   </g>
 
   <!-- Corner marks -->
-  <g stroke="#27272A" stroke-width="1" opacity="0.3">
-    <line x1="117" y1="14" x2="117" y2="22" />
-    <line x1="113" y1="14" x2="117" y2="14" />
-    <line x1="883" y1="14" x2="883" y2="22" />
-    <line x1="883" y1="14" x2="887" y2="14" />
+  <g stroke="#1A1A1E" stroke-width="1">
+    <line x1="117" y1="15" x2="117" y2="21"/>
+    <line x1="114" y1="15" x2="117" y2="15"/>
+    <line x1="883" y1="15" x2="883" y2="21"/>
+    <line x1="883" y1="15" x2="886" y2="15"/>
   </g>
 </svg>

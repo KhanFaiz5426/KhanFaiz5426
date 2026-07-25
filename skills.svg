@@ -1,135 +1,93 @@
-<svg width="1000" height="420" viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg">
+<svg width="1000" height="400" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap');
-      
       * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
-      
-      .bg { fill: #0A0A0A; }
-      
-      .section-label {
-        font-weight: 500;
-        font-size: 10px;
-        fill: #10B981;
-        letter-spacing: 0.3em;
-        text-transform: uppercase;
-      }
-
-      .group-title {
-        font-weight: 500;
-        font-size: 12px;
-        fill: #E4E4E7;
-        letter-spacing: 0.08em;
-      }
-
-      .skill-item {
-        font-weight: 400;
-        font-size: 12px;
-        fill: #71717A;
-        letter-spacing: 0.02em;
-      }
-
-      .skill-item-highlight {
-        font-weight: 500;
-        fill: #A1A1AA;
-      }
-
-      .group-number {
-        font-weight: 600;
-        font-size: 10px;
-        fill: #27272A;
-        letter-spacing: 0.1em;
-      }
-
-      .divider-line {
-        stroke: #FFFFFF;
-        stroke-opacity: 0.04;
-        stroke-width: 1;
-      }
-
-      .group-divider {
-        stroke: #FFFFFF;
-        stroke-opacity: 0.06;
-        stroke-width: 1;
-      }
-
-      /* Hover state simulation via opacity */
-      .group-card {
-        transition: opacity 0.3s ease;
-      }
+      .label { font-weight: 500; font-size: 10px; fill: #10B981; letter-spacing: 0.3em; text-transform: uppercase; }
+      .num { font-weight: 600; font-size: 10px; fill: #3F3F46; letter-spacing: 0.1em; }
+      .title { font-weight: 600; font-size: 13px; fill: #FAFAFA; }
+      .item { font-weight: 400; font-size: 12px; fill: #52525B; }
+      .item-hi { font-weight: 500; fill: #A1A1AA; }
+      .line { stroke: #FFFFFF; stroke-opacity: 0.05; stroke-width: 1; }
+      .card { fill: #0D0D0F; }
+      .card:hover { fill: #18181B; }
+      .accent-bar { fill: #10B981; opacity: 0.5; }
     </style>
-
-    <linearGradient id="emerald-underline" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#10B981" stop-opacity="0.4" />
-      <stop offset="100%" stop-color="#10B981" stop-opacity="0" />
-    </linearGradient>
   </defs>
 
-  <rect width="1000" height="420" class="bg" />
+  <rect width="1000" height="400" fill="#09090B"/>
 
-  <!-- Top divider -->
-  <line x1="120" y1="14" x2="880" y2="14" class="divider-line" />
+  <!-- Divider -->
+  <line x1="120" y1="15" x2="880" y2="15" class="line"/>
 
-  <!-- Section label -->
-  <text x="120" y="55" class="section-label">CAPABILITIES</text>
+  <!-- Label -->
+  <text x="120" y="55" class="label">CAPABILITIES</text>
 
-  <!-- 4-column grid layout -->
-  <!-- Column 1: Detection Engineering -->
-  <g class="group-card" transform="translate(120, 90)">
-    <text x="0" y="0" class="group-number">01</text>
-    <text x="0" y="28" class="group-title">Detection Engineering</text>
-    <line x1="0" y1="38" x2="40" y2="38" stroke="url(#emerald-underline)" stroke-width="1" />
-    
-    <text x="0" y="70" class="skill-item skill-item-highlight">Sigma Rules</text>
-    <text x="0" y="95" class="skill-item skill-item-highlight">YARA</text>
-    <text x="0" y="120" class="skill-item">KQL Queries</text>
-    <text x="0" y="145" class="skill-item">Splunk SPL</text>
-    <text x="0" y="170" class="skill-item">Detection-as-Code</text>
+  <!-- 4-column grid with 1px gap borders -->
+  <!-- Grid background (the border color) -->
+  <rect x="120" y="80" width="760" height="260" rx="8" fill="#1A1A1E"/>
+
+  <!-- Column backgrounds -->
+  <!-- Col 1 -->
+  <rect x="121" y="81" width="189" height="258" class="card" rx="7"/>
+  <!-- Col 2 -->
+  <rect x="311" y="81" width="189" height="258" class="card"/>
+  <!-- Col 3 -->
+  <rect x="501" y="81" width="189" height="258" class="card"/>
+  <!-- Col 4 -->
+  <rect x="691" y="81" width="188" height="258" class="card" rx="7"/>
+
+  <!-- Col 1: Detection Engineering -->
+  <g transform="translate(145, 110)">
+    <text class="num">01</text>
+    <text y="24" class="title">Detection</text>
+    <text y="40" class="title">Engineering</text>
+    <rect y="54" width="20" height="2" class="accent-bar" rx="1"/>
+    <text y="78" class="item item-hi">Sigma Rules</text>
+    <text y="100" class="item item-hi">YARA Patterns</text>
+    <text y="122" class="item">KQL Queries</text>
+    <text y="144" class="item">Splunk SPL</text>
+    <text y="166" class="item">Detection-as-Code</text>
   </g>
 
-  <!-- Column 2: Threat Intelligence -->
-  <g class="group-card" transform="translate(350, 90)">
-    <text x="0" y="0" class="group-number">02</text>
-    <text x="0" y="28" class="group-title">Threat Intelligence</text>
-    <line x1="0" y1="38" x2="40" y2="38" stroke="url(#emerald-underline)" stroke-width="1" />
-    
-    <text x="0" y="70" class="skill-item skill-item-highlight">IOC Analysis</text>
-    <text x="0" y="95" class="skill-item skill-item-highlight">Threat Hunting</text>
-    <text x="0" y="120" class="skill-item">MITRE ATT&CK</text>
-    <text x="0" y="145" class="skill-item">TTP Mapping</text>
-    <text x="0" y="170" class="skill-item">OSINT</text>
+  <!-- Col 2: Threat Intelligence -->
+  <g transform="translate(336, 110)">
+    <text class="num">02</text>
+    <text y="24" class="title">Threat</text>
+    <text y="40" class="title">Intelligence</text>
+    <rect y="54" width="20" height="2" class="accent-bar" rx="1"/>
+    <text y="78" class="item item-hi">IOC Analysis</text>
+    <text y="100" class="item item-hi">Threat Hunting</text>
+    <text y="122" class="item">MITRE ATT&CK</text>
+    <text y="144" class="item">TTP Mapping</text>
+    <text y="166" class="item">OSINT</text>
   </g>
 
-  <!-- Vertical divider -->
-  <line x1="320" y1="90" x2="320" y2="280" class="group-divider" />
-  <line x1="580" y1="90" x2="580" y2="280" class="group-divider" />
-
-  <!-- Column 3: Security Operations -->
-  <g class="group-card" transform="translate(610, 90)">
-    <text x="0" y="0" class="group-number">03</text>
-    <text x="0" y="28" class="group-title">Security Operations</text>
-    <line x1="0" y1="38" x2="40" y2="38" stroke="url(#emerald-underline)" stroke-width="1" />
-    
-    <text x="0" y="70" class="skill-item skill-item-highlight">Splunk</text>
-    <text x="0" y="95" class="skill-item skill-item-highlight">Elastic SIEM</text>
-    <text x="0" y="120" class="skill-item">Log Analysis</text>
-    <text x="0" y="145" class="skill-item">Incident Response</text>
-    <text x="0" y="170" class="skill-item">Alert Triage</text>
+  <!-- Col 3: Security Operations -->
+  <g transform="translate(526, 110)">
+    <text class="num">03</text>
+    <text y="24" class="title">Security</text>
+    <text y="40" class="title">Operations</text>
+    <rect y="54" width="20" height="2" class="accent-bar" rx="1"/>
+    <text y="78" class="item item-hi">Splunk Enterprise</text>
+    <text y="100" class="item item-hi">Elastic SIEM</text>
+    <text y="122" class="item">Log Analysis</text>
+    <text y="144" class="item">Incident Response</text>
+    <text y="166" class="item">Alert Triage</text>
   </g>
 
-  <!-- Column 4: Engineering -->
-  <g class="group-card" transform="translate(120, 300)">
-    <text x="0" y="0" class="group-number">04</text>
-    <text x="0" y="28" class="group-title">Engineering</text>
-    <line x1="0" y1="38" x2="40" y2="38" stroke="url(#emerald-underline)" stroke-width="1" />
-    
-    <text x="0" y="70" class="skill-item skill-item-highlight">Python</text>
-    <text x="0" y="95" class="skill-item skill-item-highlight">FastAPI</text>
-    <text x="0" y="120" class="skill-item">Docker</text>
-    <text x="0" y="145" class="skill-item">Git</text>
-    <text x="0" y="170" class="skill-item">Linux / Windows</text>
+  <!-- Col 4: Engineering -->
+  <g transform="translate(716, 110)">
+    <text class="num">04</text>
+    <text y="24" class="title">Engineering</text>
+    <rect y="38" width="20" height="2" class="accent-bar" rx="1"/>
+    <text y="62" class="item item-hi">Python</text>
+    <text y="84" class="item item-hi">FastAPI</text>
+    <text y="106" class="item">Docker</text>
+    <text y="128" class="item">Git</text>
+    <text y="150" class="item">Linux / Windows</text>
   </g>
 
   <!-- Bottom divider -->
-  <line x1="120" y1="406" x2="880" y2="406" class="divider-line" />
+  <line x1="120" y1="385" x2="880" y2="385" class="line"/>
 </svg>
