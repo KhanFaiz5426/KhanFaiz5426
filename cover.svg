@@ -19,7 +19,7 @@
         animation: draw-structure 40s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
       }
 
-      /* The Single Travelling Highlight */
+      /* The Single Travelling Highlight (Telemetry pulse) */
       @keyframes highlight-travel {
         0% { stroke-dashoffset: 3500; }
         100% { stroke-dashoffset: 0; }
@@ -29,32 +29,36 @@
         stroke: #7A3B3B; /* Elegant, muted burgundy */
         stroke-width: 1.5;
         stroke-linecap: round;
-        stroke-dasharray: 60 3500; /* Tiny pulse of light, massive gap */
+        stroke-dasharray: 30 3500; /* One tiny pulse of light, massive gap */
         animation: highlight-travel 18s linear infinite;
       }
 
+      /* The Dragon Base (Static, 15% opacity for perfect visual prominence) */
       .dragon-base {
         fill: none;
         stroke: #FFFFFF;
-        stroke-opacity: 0.05;
-        stroke-width: 0.5;
+        stroke-opacity: 0.15;
+        stroke-width: 1.0;
       }
     </style>
 
-    <!-- The continuous abstract vector path forming the recognizable guardian silhouette -->
-    <!-- It sweeps gracefully to form a tail, belly, neck, snout, horn, and arched wing -->
-    <path id="dragon-silhouette" d="M 650 350 C 450 400 300 400 200 320 C 100 240 100 150 150 100 C 140 80 130 60 160 50 C 190 40 220 30 210 70 C 200 110 220 140 320 100 C 450 50 600 20 750 100 C 850 150 750 200 650 180 C 750 250 700 300 600 280 C 500 260 450 320 500 350 C 550 380 600 360 650 350" />
+    <!-- 
+      The Recognizable Guardian Silhouette.
+      A single continuous stroke forming a traditional serpentine dragon wrapping the canvas.
+      Features: Sweeping tail, belly curve, arched neck, sharp swept-back horn, distinct snout, and jaw whisker.
+    -->
+    <path id="dragon-silhouette" d="M 620 120 C 450 40, 100 40, 100 200 C 100 350, 300 380, 440 380 C 700 380, 800 350, 800 250 C 800 180, 750 130, 770 100 C 790 70, 830 60, 850 40 C 830 40, 790 50, 750 70 C 730 70, 680 80, 660 100 C 680 110, 700 120, 720 120 C 720 140, 680 160, 640 180" />
   </defs>
 
   <!-- Solid, deep matte background. No gradients. No glow. -->
   <rect width="880" height="400" fill="#0A0A0C"/>
 
   <!-- ═══════════════════════════════════════════════════════════
-       THE ABSTRACT GUARDIAN
-       Sits behind the typography. One continuous, faint stroke.
+       THE GUARDIAN SILHOUETTE
+       Sits entirely behind the typography. Completely static.
        ═══════════════════════════════════════════════════════════ -->
   <g>
-    <!-- The very faint, continuous structural path -->
+    <!-- The elegant, frozen dragon stroke (15% opacity) -->
     <use href="#dragon-silhouette" class="dragon-base" />
     
     <!-- The single travelling highlight (telemetry / electrical current) -->
@@ -94,7 +98,7 @@
     <!-- The Authentic Statement (Perfectly baseline-aligned with the Name) -->
     <text x="0" y="220" font-size="14" font-weight="300" fill="#D4D4D8" letter-spacing="0.01em">Building systems for threat detection.</text>
 
-    <!-- Essential Contact Information (Removed LinkedIn and Resume) -->
+    <!-- Essential Contact Information (Email only, as requested) -->
     <text x="0" y="260" class="mono" font-size="10" fill="#52525B" letter-spacing="0.05em">khanfaizmumbai@gmail.com</text>
   </g>
 
