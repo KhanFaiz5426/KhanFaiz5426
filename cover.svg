@@ -7,7 +7,7 @@
       .serif { font-family: 'Instrument Serif', Georgia, serif; }
       .mono { font-family: 'JetBrains Mono', monospace; }
 
-      /* The structural line drawing itself */
+      /* The structural dividing line */
       @keyframes draw-structure {
         0% { stroke-dashoffset: 400; opacity: 0; }
         20% { opacity: 0.15; }
@@ -20,133 +20,68 @@
       }
 
       /* 
-         THE FRACTURE ANIMATION
-         The upper right edge remains completely stable for several seconds,
-         fractures (translates and fades), and then instantly reforms.
+         SUMI-E INK ANIMATIONS
+         1. The ink gradually revealing itself (drawing)
+         2. The subtle ink fade (opacity breathing)
       */
-      @keyframes shield-fracture {
-        0%, 75% { transform: translate(0, 0); opacity: 1; }
-        78% { transform: translate(15px, -15px); opacity: 0; }
-        88% { transform: translate(0, 0); opacity: 0; }
-        90% { opacity: 1; }
-        100% { opacity: 1; }
-      }
-      .fracture-part {
-        animation: shield-fracture 16s cubic-bezier(0.25, 1, 0.5, 1) infinite;
-      }
-
-      /* 
-         THE PARTICLES ANIMATION
-         Fragments detach and dissolve as the shield edge fractures.
-      */
-      @keyframes particle-dissolve {
-        0%, 75% { opacity: 0; transform: translate(0, 0) scale(1); }
-        77% { opacity: 0.8; transform: translate(10px, -10px) scale(1); }
-        82% { opacity: 0; transform: translate(30px, -30px) scale(0); }
-        100% { opacity: 0; }
-      }
-      .particle {
-        fill: #FFFFFF;
-        fill-opacity: 0.15;
-        animation: particle-dissolve 16s cubic-bezier(0.25, 1, 0.5, 1) infinite;
-      }
-
-      /* 
-         THE TELEMETRY PULSE
-         A single tiny pulse travelling through the network edges.
-      */
-      @keyframes telemetry-pulse {
-        0% { stroke-dashoffset: 1500; }
+      @keyframes ink-reveal {
+        0% { stroke-dashoffset: 3500; }
         100% { stroke-dashoffset: 0; }
       }
-      .telemetry {
-        stroke: #7A3B3B; /* Muted Burgundy Accent */
-        stroke-width: 1.5;
-        stroke-dasharray: 40 1500;
+      @keyframes ink-fade {
+        0%, 100% { opacity: 0.04; }
+        50% { opacity: 0.15; }
+      }
+      .sumie-stroke {
         fill: none;
-        animation: telemetry-pulse 15s linear infinite;
+        stroke: #FFFFFF;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 3500;
+        animation: ink-reveal 60s ease-out forwards, ink-fade 12s ease-in-out infinite;
       }
 
-      /* Base styling for the wireframe shield */
-      .shield-line {
-        stroke: #FFFFFF;
-        stroke-opacity: 0.08;
-        stroke-width: 0.5;
-        fill: none;
+      /* 
+         THE CRIMSON PULSE
+         A single tiny pulse of crimson ink travelling along the spine.
+      */
+      @keyframes crimson-travel {
+        0% { stroke-dashoffset: 3500; }
+        100% { stroke-dashoffset: 0; }
       }
-      .shield-node {
-        fill: #FFFFFF;
-        fill-opacity: 0.2;
+      .crimson-pulse {
+        fill: none;
+        stroke: #991B1B; /* Deep, sophisticated crimson */
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 15 3500; /* Tiny dot of ink, massive gap */
+        animation: crimson-travel 18s linear infinite;
+        opacity: 0.8;
       }
     </style>
+
+    <!-- 
+      The Sumi-e Dragon Silhouette.
+      A single expressive brush stroke forming the silhouette of an East Asian dragon.
+    -->
+    <path id="dragon-brush-stroke" d="M 620 120 C 450 40, 100 40, 100 200 C 100 350, 300 380, 440 380 C 700 380, 800 350, 800 250 C 800 180, 750 130, 770 100 C 790 70, 830 60, 850 40 C 830 40, 790 50, 750 70 C 730 70, 680 80, 660 100 C 680 110, 700 120, 720 120 C 720 140, 680 160, 640 180" />
   </defs>
 
-  <!-- Solid, deep matte background. -->
+  <!-- Solid, deep matte background (Museum print canvas). -->
   <rect width="880" height="400" fill="#0A0A0C"/>
 
   <!-- ═══════════════════════════════════════════════════════════
-       THE WIREFRAME SHIELD (Signature Identity)
+       THE SUMI-E GUARDIAN
        Sits completely behind the typography.
-       Centered exactly on the structural line (X=340).
        ═══════════════════════════════════════════════════════════ -->
   <g>
-    <!-- BASE NETWORK (Static Lines) -->
-    <path class="shield-line" d="
-      M 200 80 L 340 100 
-      M 160 200 L 200 80 
-      M 160 200 L 340 360 
-      M 340 360 L 520 200 
-      M 260 140 L 200 80 
-      M 260 140 L 160 200 
-      M 260 140 L 340 160 
-      M 260 140 L 340 260 
-      M 420 140 L 340 160 
-      M 420 140 L 340 260 
-      M 340 260 L 340 360 
-      M 340 260 L 160 200 
-      M 340 260 L 520 200 
-      M 340 160 L 340 100 
-      M 160 200 L 340 160 
-      M 520 200 L 340 160 
-      M 200 80 L 340 160
-    " />
-
-    <!-- FRACTURING SEGMENT (Upper-Right Edge) -->
-    <g class="fracture-part">
-      <!-- Network lines that detach -->
-      <path class="shield-line" d="
-        M 340 100 L 480 80 
-        M 480 80 L 520 200 
-        M 420 140 L 480 80
-      " />
-      <!-- The detaching node -->
-      <circle cx="480" cy="80" r="1.5" class="shield-node" />
-    </g>
-
-    <!-- DISSOLVING PARTICLES -->
-    <g>
-      <polygon points="480,80 490,75 485,90" class="particle" style="animation-delay: 0.1s" />
-      <polygon points="450,110 465,105 455,120" class="particle" style="animation-delay: 0s" />
-      <circle cx="430" cy="100" r="1.5" class="particle" style="animation-delay: 0.2s" />
-      <circle cx="470" cy="130" r="1" class="particle" style="animation-delay: 0.15s" />
-      <polygon points="400,90 410,85 405,100" class="particle" style="animation-delay: 0.05s" />
-    </g>
-
-    <!-- STATIC NODES (The rest of the vertices) -->
-    <g class="shield-node">
-      <circle cx="200" cy="80" r="1.5" />
-      <circle cx="340" cy="100" r="1.5" />
-      <circle cx="520" cy="200" r="1.5" />
-      <circle cx="340" cy="360" r="1.5" />
-      <circle cx="160" cy="200" r="1.5" />
-      <circle cx="340" cy="160" r="1.5" />
-      <circle cx="260" cy="140" r="1.5" />
-      <circle cx="420" cy="140" r="1.5" />
-      <circle cx="340" cy="260" r="1.5" />
-    </g>
-
-    <!-- TELEMETRY PULSE (Travelling along the network) -->
-    <path class="telemetry" d="M 160 200 L 260 140 L 340 160 L 420 140 L 520 200 L 340 260 L 340 360" />
+    <!-- The expressive ink stroke -->
+    <use href="#dragon-brush-stroke" class="sumie-stroke" />
+    
+    <!-- The single travelling crimson pulse -->
+    <use href="#dragon-brush-stroke" class="crimson-pulse" />
   </g>
 
   <!-- ═══════════════════════════════════════════════════════════
