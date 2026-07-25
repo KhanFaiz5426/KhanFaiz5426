@@ -1,180 +1,202 @@
-<svg width="1000" height="800" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+<svg width="1000" height="700" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- Ultra-premium typographic stack -->
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;700&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&amp;display=swap');
       
       * {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       }
 
-      .hero-title {
+      .hero-name {
         font-weight: 200;
-        font-size: 140px;
+        font-size: 120px;
         fill: #FFFFFF;
-        letter-spacing: -0.06em;
+        letter-spacing: -0.05em;
       }
 
-      .hero-bold {
+      .hero-name-bold {
         font-weight: 700;
       }
-      
-      .role-text {
-        font-weight: 500;
-        font-size: 11px;
-        fill: #8892B0;
-        letter-spacing: 0.35em;
+
+      .hero-dot {
+        fill: #10B981;
+      }
+
+      .hero-role {
+        font-weight: 400;
+        font-size: 14px;
+        fill: #A1A1AA;
+        letter-spacing: 0.25em;
         text-transform: uppercase;
       }
 
-      .slash {
-        fill: #2A342F;
+      .hero-role-sep {
+        fill: #27272A;
         font-weight: 300;
       }
 
-      /* Orbital Mechanics Animation */
-      @keyframes orbit {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-      
-      /* Depth scaling to simulate 3D rotation */
-      @keyframes depth {
-        0%, 100% { transform: scale(1.1); opacity: 1; }
-        50% { transform: scale(0.6); opacity: 0.2; }
-      }
-      
-      @keyframes subtle-float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-3px); }
+      .hero-tagline {
+        font-weight: 300;
+        font-size: 18px;
+        fill: #71717A;
+        letter-spacing: -0.01em;
       }
 
-      .orbit-pivot {
-        transform-origin: 650px 400px;
-        animation: orbit 35s linear infinite;
-      }
-      
-      .orbit-satellite {
-        transform-origin: 650px 60px;
-        animation: depth 35s linear infinite;
+      .status-label {
+        font-weight: 500;
+        font-size: 11px;
+        fill: #52525B;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
       }
 
-      .ambient-glow {
-        animation: subtle-float 12s ease-in-out infinite;
+      .status-value {
+        font-weight: 500;
+        font-size: 12px;
+        fill: #A1A1AA;
+        letter-spacing: 0.02em;
+      }
+
+      .cta-primary-text {
+        font-weight: 500;
+        font-size: 12px;
+        fill: #FFFFFF;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .cta-secondary-text {
+        font-weight: 500;
+        font-size: 12px;
+        fill: #71717A;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        font-weight: 600;
+        font-size: 9px;
+        fill: #3F3F46;
+        letter-spacing: 0.3em;
+      }
+
+      /* Status pulse */
+      @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(1.8); }
+      }
+      .status-pulse {
+        animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        transform-origin: center;
+      }
+
+      /* Subtle dot grid animation */
+      @keyframes grid-shift {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(30px); }
+      }
+      .dot-grid {
+        animation: grid-shift 20s linear infinite;
       }
     </style>
-    
-    <!-- Microscopic Sensor Grid (Atmosphere) -->
-    <pattern id="micro-grid" width="30" height="30" patternUnits="userSpaceOnUse">
-      <circle cx="15" cy="15" r="0.5" fill="#ffffff" opacity="0.015" />
+
+    <!-- Dot pattern -->
+    <pattern id="dot-grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="0.6" fill="#FFFFFF" opacity="0.03" />
     </pattern>
 
-    <!-- Deep Canvas Vignette -->
-    <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
-      <stop offset="40%" stop-color="#000000" stop-opacity="0" />
-      <stop offset="100%" stop-color="#020302" stop-opacity="0.9" />
+    <!-- Subtle radial vignette -->
+    <radialGradient id="vignette" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#0A0A0A" stop-opacity="0" />
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0.8" />
     </radialGradient>
 
-    <!-- Trail fade for the orbital satellite -->
-    <linearGradient id="trail-fade" x1="100%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#00FF9D" stop-opacity="0.3" />
-      <stop offset="100%" stop-color="#00FF9D" stop-opacity="0" />
-    </linearGradient>
-
-    <radialGradient id="satellite-flare" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#00FF9D" stop-opacity="0.2" />
-      <stop offset="100%" stop-color="#00FF9D" stop-opacity="0" />
+    <!-- Emerald glow for status -->
+    <radialGradient id="status-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0" />
     </radialGradient>
 
-    <!-- Implied Geometry Gradients -->
-    <!-- These gradients map across the strokes to fade them into pure darkness on the left side -->
-    <linearGradient id="arc-fade-white" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="45%" stop-color="#ffffff" stop-opacity="0" />
-      <stop offset="65%" stop-color="#ffffff" stop-opacity="0.02" />
-      <stop offset="90%" stop-color="#ffffff" stop-opacity="0.08" />
+    <!-- CTA gradient -->
+    <linearGradient id="cta-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#059669" />
     </linearGradient>
 
-    <linearGradient id="arc-fade-strong" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="45%" stop-color="#ffffff" stop-opacity="0" />
-      <stop offset="90%" stop-color="#ffffff" stop-opacity="0.2" />
+    <!-- Top border glow -->
+    <linearGradient id="top-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0" />
+      <stop offset="50%" stop-color="#10B981" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0" />
     </linearGradient>
-
-    <!-- Deep Shadow Trench Fade -->
-    <linearGradient id="shadow-fade" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="40%" stop-color="#000000" stop-opacity="0" />
-      <stop offset="90%" stop-color="#000000" stop-opacity="0.8" />
-    </linearGradient>
-
-    <radialGradient id="volumetric-glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.015" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-    </radialGradient>
   </defs>
 
-  <!-- Base Canvas -->
-  <rect width="1000" height="800" fill="#070908" />
+  <!-- Base -->
+  <rect width="1000" height="700" fill="#0A0A0A" />
   
-  <!-- Atmosphere (Grid & Vignette) -->
-  <rect width="1000" height="800" fill="url(#micro-grid)" />
-  <rect width="1000" height="800" fill="url(#vignette)" style="pointer-events: none;" />
+  <!-- Dot grid -->
+  <g class="dot-grid">
+    <rect width="1000" height="730" fill="url(#dot-grid)" />
+  </g>
+  
+  <!-- Vignette -->
+  <rect width="1000" height="700" fill="url(#vignette)" />
 
-  <!-- 
-    THE ORBITAL SATELLITE
-    Positioned BEFORE typography in the DOM so it disappears behind the letters.
-  -->
-  <g class="orbit-pivot">
-    <!-- Trail arc -->
-    <!-- Center is 650,400. Radius is 340. Top is 650,60. Left is 310,400. -->
-    <path d="M 650 60 A 340 340 0 0 0 310 400" fill="none" stroke="url(#trail-fade)" stroke-width="1.2" />
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="1000" height="1" fill="url(#top-glow)" />
+
+  <!-- Brand mark -->
+  <text x="60" y="55" class="brand-mark">FK</text>
+  <line x1="95" y1="50" x2="95" y2="58" stroke="#27272A" stroke-width="1" />
+  <text x="108" y="55" class="brand-mark">DETECTION ENGINEER</text>
+
+  <!-- Main content area -->
+  <g transform="translate(60, 200)">
+    <!-- Name -->
+    <text x="0" y="0" class="hero-name">
+      FAIZ<tspan class="hero-name-bold"> KHAN</tspan><tspan class="hero-dot">.</tspan>
+    </text>
+
+    <!-- Role -->
+    <text x="5" y="65" class="hero-role">
+      DETECTION ENGINEER <tspan class="hero-role-sep">/</tspan> BLUE TEAM <tspan class="hero-role-sep">/</tspan> THREAT HUNTING
+    </text>
+
+    <!-- Tagline -->
+    <text x="5" y="110" class="hero-tagline">Building production-quality security tools that detect, protect, and respond.</text>
+  </g>
+
+  <!-- Status indicator -->
+  <g transform="translate(60, 420)">
+    <text x="0" y="0" class="status-label">CURRENTLY</text>
     
-    <g class="orbit-satellite">
-      <circle cx="650" cy="60" r="40" fill="url(#satellite-flare)" />
-      <circle cx="650" cy="60" r="2.5" fill="#00FF9D" />
-      <circle cx="650" cy="60" r="8" fill="none" stroke="#00FF9D" stroke-width="0.5" stroke-opacity="0.5" />
+    <!-- Status dot with pulse -->
+    <g transform="translate(0, 25)">
+      <circle cx="5" cy="5" r="12" fill="url(#status-glow)" class="status-pulse" />
+      <circle cx="5" cy="5" r="4" fill="#10B981" />
+      <text x="18" y="9" class="status-value">Building detection engineering tools</text>
     </g>
   </g>
 
-  <!-- 
-    THE ECLIPSE (Precision Machined Rings)
-    No solid black discs. Constructed entirely of recessed arcs and highlighted rims.
-    The gradients physically cut off the left side, leaving pure implied geometry.
-  -->
-  <g>
-    <!-- Soft volumetric glow to give the rings atmosphere -->
-    <circle cx="650" cy="400" r="300" fill="url(#volumetric-glow)" />
+  <!-- CTA area -->
+  <g transform="translate(60, 520)">
+    <!-- Primary CTA -->
+    <g>
+      <rect x="0" y="0" width="180" height="44" rx="6" fill="url(#cta-gradient)" opacity="0.9" />
+      <text x="90" y="27" text-anchor="middle" class="cta-primary-text">VIEW PROJECTS</text>
+    </g>
 
-    <!-- Outermost Boundary -->
-    <circle cx="650" cy="400" r="420" fill="none" stroke="url(#arc-fade-white)" stroke-width="0.5" />
-    
-    <!-- Outer Track Groove -->
-    <circle cx="650" cy="400" r="380" fill="none" stroke="url(#arc-fade-white)" stroke-width="1" />
-    
-    <!-- Deep Recessed Layer (The Trench) -->
-    <circle cx="650" cy="400" r="290" fill="none" stroke="url(#shadow-fade)" stroke-width="25" />
-    
-    <!-- Sharp Bevel Edge (Highlight catching light) -->
-    <circle cx="650" cy="400" r="277" fill="none" stroke="url(#arc-fade-strong)" stroke-width="0.5" />
-    
-    <!-- Inner Precision Dial (Calibrated) -->
-    <circle cx="650" cy="400" r="260" fill="none" stroke="url(#arc-fade-white)" stroke-width="1" stroke-dasharray="2 8" />
-    <circle cx="650" cy="400" r="255" fill="none" stroke="url(#arc-fade-white)" stroke-width="0.5" stroke-dasharray="1 18" />
+    <!-- Secondary CTA -->
+    <g transform="translate(200, 0)">
+      <rect x="0" y="0" width="180" height="44" rx="6" fill="transparent" stroke="#27272A" stroke-width="1" />
+      <text x="90" y="27" text-anchor="middle" class="cta-secondary-text">CONTACT</text>
+    </g>
   </g>
 
-  <!-- Massive, Asymmetrical Typography -->
-  <!-- Left aligned, overlapping the left side of the rings for massive tension. -->
-  <g class="ambient-glow">
-    <text x="120" y="440" class="hero-title">
-      FAIZ <tspan class="hero-bold">KHAN</tspan><tspan fill="#00FF9D">.</tspan>
-    </text>
-    
-    <!-- Precision-aligned editorial roles -->
-    <text x="125" y="500" class="role-text">
-      DETECTION ENGINEER <tspan class="slash" dx="15" dy="-1">/</tspan> <tspan dx="15">BLUE TEAM</tspan> <tspan class="slash" dx="15" dy="-1">/</tspan> <tspan dx="15">THREAT HUNTING</tspan>
-    </text>
-  </g>
-
-  <!-- Minimalist Brand Identification -->
-  <g transform="translate(60, 60)">
-    <text x="0" y="0" font-size="9" fill="#5A6660" letter-spacing="0.2em" font-weight="500">FK // DETECTION</text>
+  <!-- Decorative: minimal corner marks -->
+  <g stroke="#27272A" stroke-width="1" opacity="0.5">
+    <!-- Bottom right corner -->
+    <line x1="940" y1="640" x2="940" y2="660" />
+    <line x1="920" y1="660" x2="940" y2="660" />
   </g>
 </svg>

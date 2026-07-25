@@ -1,0 +1,135 @@
+<svg width="1000" height="420" viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap');
+      
+      * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+      
+      .bg { fill: #0A0A0A; }
+      
+      .section-label {
+        font-weight: 500;
+        font-size: 10px;
+        fill: #10B981;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+      }
+
+      .group-title {
+        font-weight: 500;
+        font-size: 12px;
+        fill: #E4E4E7;
+        letter-spacing: 0.08em;
+      }
+
+      .skill-item {
+        font-weight: 400;
+        font-size: 12px;
+        fill: #71717A;
+        letter-spacing: 0.02em;
+      }
+
+      .skill-item-highlight {
+        font-weight: 500;
+        fill: #A1A1AA;
+      }
+
+      .group-number {
+        font-weight: 600;
+        font-size: 10px;
+        fill: #27272A;
+        letter-spacing: 0.1em;
+      }
+
+      .divider-line {
+        stroke: #FFFFFF;
+        stroke-opacity: 0.04;
+        stroke-width: 1;
+      }
+
+      .group-divider {
+        stroke: #FFFFFF;
+        stroke-opacity: 0.06;
+        stroke-width: 1;
+      }
+
+      /* Hover state simulation via opacity */
+      .group-card {
+        transition: opacity 0.3s ease;
+      }
+    </style>
+
+    <linearGradient id="emerald-underline" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1000" height="420" class="bg" />
+
+  <!-- Top divider -->
+  <line x1="120" y1="14" x2="880" y2="14" class="divider-line" />
+
+  <!-- Section label -->
+  <text x="120" y="55" class="section-label">CAPABILITIES</text>
+
+  <!-- 4-column grid layout -->
+  <!-- Column 1: Detection Engineering -->
+  <g class="group-card" transform="translate(120, 90)">
+    <text x="0" y="0" class="group-number">01</text>
+    <text x="0" y="28" class="group-title">Detection Engineering</text>
+    <line x1="0" y1="38" x2="40" y2="38" stroke="url(#emerald-underline)" stroke-width="1" />
+    
+    <text x="0" y="70" class="skill-item skill-item-highlight">Sigma Rules</text>
+    <text x="0" y="95" class="skill-item skill-item-highlight">YARA</text>
+    <text x="0" y="120" class="skill-item">KQL Queries</text>
+    <text x="0" y="145" class="skill-item">Splunk SPL</text>
+    <text x="0" y="170" class="skill-item">Detection-as-Code</text>
+  </g>
+
+  <!-- Column 2: Threat Intelligence -->
+  <g class="group-card" transform="translate(350, 90)">
+    <text x="0" y="0" class="group-number">02</text>
+    <text x="0" y="28" class="group-title">Threat Intelligence</text>
+    <line x1="0" y1="38" x2="40" y2="38" stroke="url(#emerald-underline)" stroke-width="1" />
+    
+    <text x="0" y="70" class="skill-item skill-item-highlight">IOC Analysis</text>
+    <text x="0" y="95" class="skill-item skill-item-highlight">Threat Hunting</text>
+    <text x="0" y="120" class="skill-item">MITRE ATT&CK</text>
+    <text x="0" y="145" class="skill-item">TTP Mapping</text>
+    <text x="0" y="170" class="skill-item">OSINT</text>
+  </g>
+
+  <!-- Vertical divider -->
+  <line x1="320" y1="90" x2="320" y2="280" class="group-divider" />
+  <line x1="580" y1="90" x2="580" y2="280" class="group-divider" />
+
+  <!-- Column 3: Security Operations -->
+  <g class="group-card" transform="translate(610, 90)">
+    <text x="0" y="0" class="group-number">03</text>
+    <text x="0" y="28" class="group-title">Security Operations</text>
+    <line x1="0" y1="38" x2="40" y2="38" stroke="url(#emerald-underline)" stroke-width="1" />
+    
+    <text x="0" y="70" class="skill-item skill-item-highlight">Splunk</text>
+    <text x="0" y="95" class="skill-item skill-item-highlight">Elastic SIEM</text>
+    <text x="0" y="120" class="skill-item">Log Analysis</text>
+    <text x="0" y="145" class="skill-item">Incident Response</text>
+    <text x="0" y="170" class="skill-item">Alert Triage</text>
+  </g>
+
+  <!-- Column 4: Engineering -->
+  <g class="group-card" transform="translate(120, 300)">
+    <text x="0" y="0" class="group-number">04</text>
+    <text x="0" y="28" class="group-title">Engineering</text>
+    <line x1="0" y1="38" x2="40" y2="38" stroke="url(#emerald-underline)" stroke-width="1" />
+    
+    <text x="0" y="70" class="skill-item skill-item-highlight">Python</text>
+    <text x="0" y="95" class="skill-item skill-item-highlight">FastAPI</text>
+    <text x="0" y="120" class="skill-item">Docker</text>
+    <text x="0" y="145" class="skill-item">Git</text>
+    <text x="0" y="170" class="skill-item">Linux / Windows</text>
+  </g>
+
+  <!-- Bottom divider -->
+  <line x1="120" y1="406" x2="880" y2="406" class="divider-line" />
+</svg>
