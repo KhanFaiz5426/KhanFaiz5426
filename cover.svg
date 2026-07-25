@@ -1,0 +1,148 @@
+<svg width="880" height="880" viewBox="0 0 880 880" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@200;300;400&amp;family=JetBrains+Mono:wght@300;400&amp;display=swap');
+
+      * { font-family: 'Inter', -apple-system, sans-serif; }
+      .serif { font-family: 'Instrument Serif', Georgia, serif; }
+      .mono { font-family: 'JetBrains Mono', monospace; }
+
+      /* Extremely slow, elegant drawing animation */
+      @keyframes draw-path {
+        0% { stroke-dashoffset: 2000; opacity: 0; }
+        15% { opacity: 0.15; }
+        85% { opacity: 0.15; }
+        100% { stroke-dashoffset: 0; opacity: 0; }
+      }
+      .dragon-line {
+        stroke-dasharray: 2000;
+        animation: draw-path 30s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        fill: none;
+        stroke: #E4E4E7;
+        stroke-width: 0.5;
+        stroke-linecap: round;
+      }
+
+      /* Slow shimmer for certain structural paths */
+      @keyframes structural-shimmer {
+        0%, 100% { opacity: 0.03; }
+        50% { opacity: 0.12; }
+      }
+      .dragon-structure {
+        fill: none;
+        stroke: #A1A1AA;
+        stroke-width: 0.5;
+        animation: structural-shimmer 15s ease-in-out infinite;
+      }
+
+      /* Ambient particle flow */
+      @keyframes particle-fade {
+        0% { opacity: 0; }
+        20% { opacity: 0.8; }
+        80% { opacity: 0.8; }
+        100% { opacity: 0; }
+      }
+      .particle {
+        fill: #FFFFFF;
+        animation: particle-fade 12s ease-in-out infinite;
+      }
+    </style>
+
+    <!-- Deep obsidian background -->
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#141416" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#08080A" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="880" height="880" fill="url(#bg-glow)"/>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       THE DRAGON (Abstract Engineering Topology)
+       Placed slightly off-center, sweeping organically across the canvas
+       ═══════════════════════════════════════════════════════════ -->
+  <g transform="translate(100, 100) scale(1.1)">
+    
+    <!-- Base structural lines (The "Wireframe" of the creature) -->
+    <!-- Tail sweeping up from bottom left -->
+    <path class="dragon-structure" d="M -50,600 C 50,550 150,450 250,400 C 300,380 320,380 350,420 C 320,480 200,650 100,750"/>
+    <path class="dragon-structure" d="M -30,620 C 70,570 170,470 270,420 C 320,400 340,400 370,440 C 340,500 220,670 120,770" style="animation-delay: -5s"/>
+    
+    <!-- Spine and Neck curving towards top right -->
+    <path class="dragon-structure" d="M 250,400 C 350,300 450,250 500,150 C 520,100 500,50 450,80 C 400,100 380,200 350,250"/>
+    
+    <!-- Abstract Wing topology (Fluid data lines forming a massive wing) -->
+    <path class="dragon-structure" d="M 450,250 C 550,200 650,250 700,350 C 720,400 700,450 650,420 C 550,350 450,300 400,320"/>
+    <path class="dragon-structure" d="M 430,270 C 530,220 630,270 680,370 C 700,420 680,470 630,440 C 530,370 430,320 380,340" style="animation-delay: -3s"/>
+    <path class="dragon-structure" d="M 410,290 C 510,240 610,290 660,390 C 680,440 660,490 610,460 C 510,390 410,340 360,360" style="animation-delay: -6s"/>
+
+    <!-- Animated fluid drawing lines (The "Signal") -->
+    
+    <!-- Path 1: Core Spine -->
+    <path id="spine-path" class="dragon-line" d="M -50,600 Q 150,450 300,400 T 500,150 Q 520,100 450,80 Q 380,60 300,150"/>
+    
+    <!-- Path 2: Wing Sweep 1 -->
+    <path id="wing-1" class="dragon-line" style="animation-delay: -8s; animation-duration: 25s;" d="M 350,250 Q 550,150 700,350 Q 750,450 600,400 T 400,320"/>
+    
+    <!-- Path 3: Wing Sweep 2 -->
+    <path id="wing-2" class="dragon-line" style="animation-delay: -15s; animation-duration: 35s;" d="M 300,280 Q 500,180 650,380 Q 700,480 550,430 T 350,350"/>
+    
+    <!-- Path 4: Tail complex -->
+    <path id="tail-1" class="dragon-line" style="animation-delay: -4s; animation-duration: 28s;" d="M 350,420 Q 250,550 150,650 T 50,750"/>
+
+    <!-- Particle Geometry (Data nodes flowing through the creature) -->
+    
+    <circle r="2" class="particle" style="animation-duration: 15s;">
+      <animateMotion dur="15s" repeatCount="indefinite" path="M -50,600 Q 150,450 300,400 T 500,150"/>
+    </circle>
+    
+    <circle r="1.5" class="particle" style="animation-duration: 22s; animation-delay: -5s;">
+      <animateMotion dur="22s" repeatCount="indefinite" path="M 350,250 Q 550,150 700,350 Q 750,450 600,400 T 400,320"/>
+    </circle>
+    
+    <circle r="2" class="particle" style="animation-duration: 18s; animation-delay: -12s;">
+      <animateMotion dur="18s" repeatCount="indefinite" path="M 500,150 Q 520,100 450,80 Q 380,60 300,150"/>
+    </circle>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TYPOGRAPHY (The Magazine Cover)
+       Placed with immense breathing room, overlapping the dragon
+       ═══════════════════════════════════════════════════════════ -->
+  
+  <g transform="translate(80, 440)">
+    <!-- Identity -->
+    <text y="0" class="serif" font-size="140" font-weight="400" fill="#FFFFFF" letter-spacing="-0.03em" style="text-shadow: 0px 4px 40px rgba(0,0,0,0.8);">Faiz Khan.</text>
+    
+    <!-- Role -->
+    <text x="10" y="50" class="mono" font-size="10" font-weight="400" fill="#A1A1AA" letter-spacing="0.4em">DETECTION ENGINEER</text>
+
+    <!-- The Personal Statement (Measuring the delta...) -->
+    <!-- Positioned elegantly below, like a subtitle -->
+    <text x="10" y="110" font-size="18" font-weight="300" fill="#D4D4D8" letter-spacing="0.02em" style="text-shadow: 0px 2px 20px rgba(0,0,0,0.5);">Measuring the delta between noise and intent.</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MINIMAL SIGN-OFF
+       Anchoring the bottom of the canvas
+       ═══════════════════════════════════════════════════════════ -->
+  
+  <g transform="translate(80, 800)" class="mono" font-size="10" fill="#71717A" letter-spacing="0.05em">
+    <text x="0" y="0">khanfaizmumbai@gmail.com</text>
+    <text x="180" y="0">·</text>
+    <text x="210" y="0">github</text>
+    <text x="265" y="0">·</text>
+    <text x="295" y="0">linkedin</text>
+  </g>
+
+  <!-- Elegant structural border marks -->
+  <g stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="0.5">
+    <!-- Top Left -->
+    <line x1="40" y1="40" x2="60" y2="40"/>
+    <line x1="40" y1="40" x2="40" y2="60"/>
+    <!-- Bottom Right -->
+    <line x1="840" y1="840" x2="820" y2="840"/>
+    <line x1="840" y1="840" x2="840" y2="820"/>
+  </g>
+
+</svg>
