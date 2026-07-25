@@ -1,164 +1,68 @@
-<svg width="880" height="600" viewBox="0 0 880 600" xmlns="http://www.w3.org/2000/svg">
+<svg width="880" height="400" viewBox="0 0 880 400" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@300;400&amp;family=JetBrains+Mono:wght@400&amp;display=swap');
 
       * { font-family: 'Inter', -apple-system, sans-serif; }
+      .serif { font-family: 'Instrument Serif', Georgia, serif; }
       .mono { font-family: 'JetBrains Mono', monospace; }
 
-      /* The Origin Signature rotation */
-      @keyframes origin-spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+      /* The single, invisible animation: The structural line drawing itself */
+      @keyframes draw-structure {
+        0% { stroke-dashoffset: 400; opacity: 0; }
+        20% { opacity: 0.15; }
+        80% { opacity: 0.15; }
+        100% { stroke-dashoffset: 0; opacity: 0; }
       }
-      .signature-mark {
-        transform-origin: center;
-        animation: origin-spin 120s linear infinite;
-      }
-
-      /* Slow plotter scanning line */
-      @keyframes plotter-scan {
-        0% { transform: translateX(0); opacity: 0; }
-        5% { opacity: 0.15; }
-        95% { opacity: 0.15; }
-        100% { transform: translateX(760px); opacity: 0; }
-      }
-      .plotter-line {
-        animation: plotter-scan 60s linear infinite;
-      }
-
-      /* Base styling for all drafting marks */
-      .draft-line {
-        stroke: #FFFFFF;
-        stroke-width: 0.5;
-        stroke-opacity: 0.1;
-        fill: none;
-        shape-rendering: crispEdges;
-      }
-      .draft-text {
-        fill: #FFFFFF;
-        fill-opacity: 0.3;
-        font-size: 8px;
-        letter-spacing: 0.1em;
+      .structural-line {
+        stroke-dasharray: 400;
+        animation: draw-structure 40s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
       }
     </style>
   </defs>
 
-  <!-- Deep matte architectural background -->
-  <rect width="880" height="600" fill="#0A0B10"/>
+  <!-- Solid, deep matte background. No gradients. No glow. -->
+  <rect width="880" height="400" fill="#0A0A0C"/>
 
   <!-- ═══════════════════════════════════════════════════════════
-       THE GRID & DRAFTING MARKS
+       THE STRUCTURE
+       A single line separating Identity from Metadata.
        ═══════════════════════════════════════════════════════════ -->
-  <g class="draft-line">
-    <!-- Printable area margins (60px padding) -->
-    <!-- Top-left crop mark -->
-    <path d="M 60,40 L 60,60 M 40,60 L 60,60" />
-    <!-- Top-right crop mark -->
-    <path d="M 820,40 L 820,60 M 820,60 L 840,60" />
-    <!-- Bottom-left crop mark -->
-    <path d="M 60,560 L 60,540 M 40,540 L 60,540" />
-    <!-- Bottom-right crop mark -->
-    <path d="M 820,560 L 820,540 M 820,540 L 840,540" />
-
-    <!-- Center alignment hashes -->
-    <path d="M 440,30 L 440,40 M 440,560 L 440,570" />
-    <path d="M 30,300 L 40,300 M 840,300 L 850,300" />
-
-    <!-- Edge Coordinate Ticks (Top) -->
-    <path d="M 160,55 L 160,60 M 260,55 L 260,60 M 360,55 L 360,60 M 560,55 L 560,60 M 660,55 L 660,60 M 760,55 L 760,60" stroke-opacity="0.05" />
+  <g>
+    <!-- Base line (faint) -->
+    <line x1="340" y1="60" x2="340" y2="340" stroke="#FFFFFF" stroke-opacity="0.03" stroke-width="0.5" />
     
-    <!-- Infinite baseline references holding the typography -->
-    <!-- Name baseline -->
-    <line x1="0" y1="320" x2="880" y2="320" stroke-opacity="0.04" />
-    <!-- Role baseline -->
-    <line x1="0" y1="360" x2="880" y2="360" stroke-opacity="0.04" />
-    <!-- Statement baseline -->
-    <line x1="0" y1="400" x2="880" y2="400" stroke-opacity="0.04" />
-  </g>
-
-  <g class="mono draft-text">
-    <text x="60" y="50">X:00</text>
-    <text x="820" y="50" text-anchor="end">X:88</text>
-    <text x="50" y="60" text-anchor="end" alignment-baseline="middle">Y:00</text>
-    <text x="50" y="540" text-anchor="end" alignment-baseline="middle">Y:60</text>
-  </g>
-
-  <!-- ═══════════════════════════════════════════════════════════
-       THE ANIMATION (Plotter Line)
-       ═══════════════════════════════════════════════════════════ -->
-  <g transform="translate(60, 60)">
-    <!-- Scanning laser/plotter -->
-    <line x1="0" y1="0" x2="0" y2="480" stroke="#FFFFFF" stroke-width="0.5" class="plotter-line" />
-  </g>
-
-  <!-- ═══════════════════════════════════════════════════════════
-       THE SIGNATURE: "THE ORIGIN MARK"
-       A hyper-precise registration mark defining the aesthetic identity
-       ═══════════════════════════════════════════════════════════ -->
-  <g transform="translate(740, 160)">
-    <!-- Static outer ring -->
-    <circle cx="0" cy="0" r="40" class="draft-line" stroke-dasharray="1 3" stroke-opacity="0.08" />
+    <!-- Animated tracing line -->
+    <line x1="340" y1="60" x2="340" y2="340" stroke="#FFFFFF" stroke-width="0.5" class="structural-line" />
     
-    <!-- Animated precision core -->
-    <g class="signature-mark">
-      <circle cx="0" cy="0" r="16" class="draft-line" />
-      <circle cx="0" cy="0" r="1" fill="#FFFFFF" fill-opacity="0.5" />
-      
-      <!-- Crosshairs -->
-      <line x1="-24" y1="0" x2="24" y2="0" class="draft-line" />
-      <line x1="0" y1="-24" x2="0" y2="24" class="draft-line" />
-      
-      <!-- Calibration hashes -->
-      <line x1="-16" y1="-4" x2="-16" y2="4" class="draft-line" />
-      <line x1="16" y1="-4" x2="16" y2="4" class="draft-line" />
-      <line x1="-4" y1="-16" x2="4" y2="-16" class="draft-line" />
-      <line x1="-4" y1="16" x2="4" y2="16" class="draft-line" />
+    <!-- The Signature Motif: A single microscopic registration crosshair -->
+    <path d="M 338,220 L 342,220 M 340,218 L 340,222" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="0.5" />
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       THE IDENTITY (Left Hemisphere)
+       ═══════════════════════════════════════════════════════════ -->
+  <g transform="translate(300, 220)">
+    <!-- Typography is the hero. Set in an elegant, high-contrast serif. -->
+    <text x="0" y="0" text-anchor="end" class="serif" font-size="64" font-weight="400" fill="#FFFFFF" letter-spacing="-0.02em">Faiz Khan.</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       THE METADATA (Right Hemisphere)
+       ═══════════════════════════════════════════════════════════ -->
+  <g transform="translate(380, 0)">
+    <!-- Role (Microscopic, precise) -->
+    <text x="0" y="190" class="mono" font-size="10" font-weight="400" fill="#71717A" letter-spacing="0.3em">DETECTION ENGINEER</text>
+
+    <!-- The Authentic Statement (Perfectly baseline-aligned with the Name) -->
+    <text x="0" y="220" font-size="14" font-weight="300" fill="#D4D4D8" letter-spacing="0.01em">Building systems for threat detection.</text>
+
+    <!-- Essential Contact Information -->
+    <g class="mono" font-size="10" fill="#52525B" letter-spacing="0.05em">
+      <text x="0" y="260">khanfaizmumbai@gmail.com</text>
+      <text x="170" y="260">·</text>
+      <text x="190" y="260">linkedin</text>
     </g>
-    
-    <!-- Signature text -->
-    <text x="0" y="60" text-anchor="middle" class="mono draft-text" style="font-size: 7px; fill-opacity: 0.2;">ORIGIN ⌀ 0.00</text>
-  </g>
-
-  <!-- ═══════════════════════════════════════════════════════════
-       THE TYPOGRAPHY (Swiss Grid Anchor)
-       ═══════════════════════════════════════════════════════════ -->
-  <g transform="translate(60, 320)">
-    <!-- Name (Massive, clinical sans-serif, tight tracking) -->
-    <text y="0" font-size="110" font-weight="800" fill="#F4F4F5" letter-spacing="-0.04em">Faiz Khan.</text>
-    
-    <!-- Role (Technical, precise) -->
-    <text x="4" y="40" class="mono" font-size="10" font-weight="500" fill="#71717A" letter-spacing="0.4em">DETECTION ENGINEER</text>
-
-    <!-- The Authentic Statement -->
-    <text x="4" y="80" font-size="14" font-weight="300" fill="#A1A1AA" letter-spacing="0.01em">Building systems for threat detection.</text>
-  </g>
-
-  <!-- ═══════════════════════════════════════════════════════════
-       THE TITLE BLOCK (Contact Links)
-       Formal, technical housing for the sign-off
-       ═══════════════════════════════════════════════════════════ -->
-  <g transform="translate(480, 500)">
-    <!-- Block structure -->
-    <path d="M 0,0 L 340,0 L 340,40 L 0,40 Z" class="draft-line" />
-    <line x1="140" y1="0" x2="140" y2="40" class="draft-line" />
-    <line x1="240" y1="0" x2="240" y2="40" class="draft-line" />
-    
-    <!-- Top partition line -->
-    <line x1="0" y1="14" x2="340" y2="14" class="draft-line" stroke-opacity="0.05" />
-
-    <!-- Labels -->
-    <text x="6" y="10" class="mono draft-text" style="font-size: 6px;">COMMUNICATION</text>
-    <text x="146" y="10" class="mono draft-text" style="font-size: 6px;">NETWORK</text>
-    <text x="246" y="10" class="mono draft-text" style="font-size: 6px;">DOCUMENTATION</text>
-
-    <!-- Links -->
-    <text x="6" y="28" font-size="11" font-weight="400" fill="#D4D4D8">khanfaizmumbai@gmail.com</text>
-    <text x="146" y="28" font-size="11" font-weight="400" fill="#D4D4D8">linkedin</text>
-    <text x="246" y="28" font-size="11" font-weight="400" fill="#D4D4D8">resume</text>
-
-    <!-- Tech specs label (outside the block) -->
-    <text x="340" y="-8" text-anchor="end" class="mono draft-text" style="font-size: 7px;">SYS REV. 5 // 2026</text>
   </g>
 
 </svg>
