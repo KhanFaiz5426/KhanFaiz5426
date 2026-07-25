@@ -25,21 +25,21 @@
          2. The subtle ink fade (opacity breathing)
       */
       @keyframes ink-reveal {
-        0% { stroke-dashoffset: 3500; }
+        0% { stroke-dashoffset: 2500; }
         100% { stroke-dashoffset: 0; }
       }
       @keyframes ink-fade {
-        0%, 100% { opacity: 0.04; }
-        50% { opacity: 0.15; }
+        0%, 100% { opacity: 0.03; }
+        50% { opacity: 0.12; }
       }
       .sumie-stroke {
         fill: none;
         stroke: #FFFFFF;
-        stroke-width: 2;
+        stroke-width: 3;
         stroke-linecap: round;
         stroke-linejoin: round;
-        stroke-dasharray: 3500;
-        animation: ink-reveal 60s ease-out forwards, ink-fade 12s ease-in-out infinite;
+        stroke-dasharray: 2500;
+        animation: ink-reveal 25s ease-out forwards, ink-fade 12s ease-in-out infinite;
       }
 
       /* 
@@ -47,16 +47,16 @@
          A single tiny pulse of crimson ink travelling along the spine.
       */
       @keyframes crimson-travel {
-        0% { stroke-dashoffset: 3500; }
+        0% { stroke-dashoffset: 2500; }
         100% { stroke-dashoffset: 0; }
       }
       .crimson-pulse {
         fill: none;
         stroke: #991B1B; /* Deep, sophisticated crimson */
-        stroke-width: 2.5;
+        stroke-width: 3;
         stroke-linecap: round;
         stroke-linejoin: round;
-        stroke-dasharray: 15 3500; /* Tiny dot of ink, massive gap */
+        stroke-dasharray: 12 2500; /* Tiny dot of ink, massive gap */
         animation: crimson-travel 18s linear infinite;
         opacity: 0.8;
       }
@@ -64,9 +64,11 @@
 
     <!-- 
       The Sumi-e Dragon Silhouette.
-      A single expressive brush stroke forming the silhouette of an East Asian dragon.
+      A completely new, gestural brush stroke. It consists of massive, sweeping
+      curves that imply a serpentine dragon form (horn, snout, sweeping neck, and tail loop)
+      without tracing literal anatomical features.
     -->
-    <path id="dragon-brush-stroke" d="M 620 120 C 450 40, 100 40, 100 200 C 100 350, 300 380, 440 380 C 700 380, 800 350, 800 250 C 800 180, 750 130, 770 100 C 790 70, 830 60, 850 40 C 830 40, 790 50, 750 70 C 730 70, 680 80, 660 100 C 680 110, 700 120, 720 120 C 720 140, 680 160, 640 180" />
+    <path id="dragon-brush-stroke" d="M 300 80 Q 320 130 350 150 Q 300 150 250 120 C 100 200 200 400 450 380 C 700 360 850 300 800 150 Q 750 0 650 100" />
   </defs>
 
   <!-- Solid, deep matte background (Museum print canvas). -->
