@@ -7,7 +7,7 @@
       .serif { font-family: 'Instrument Serif', Georgia, serif; }
       .mono { font-family: 'JetBrains Mono', monospace; }
 
-      /* The single, invisible animation: The structural line drawing itself */
+      /* The single structural animation */
       @keyframes draw-structure {
         0% { stroke-dashoffset: 400; opacity: 0; }
         20% { opacity: 0.15; }
@@ -18,11 +18,47 @@
         stroke-dasharray: 400;
         animation: draw-structure 40s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
       }
+
+      /* The Dragon Highlight (Telemetry moving through the system) */
+      @keyframes highlight-travel {
+        0% { stroke-dashoffset: 3500; }
+        100% { stroke-dashoffset: 0; }
+      }
+      .dragon-highlight {
+        fill: none;
+        stroke: #7A3B3B; /* Sophisticated muted burgundy */
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-dasharray: 80 3500; /* 80px highlight, massive invisible gap */
+        animation: highlight-travel 18s linear infinite;
+      }
+
+      .dragon-base {
+        fill: none;
+        stroke: #FFFFFF;
+        stroke-opacity: 0.04;
+        stroke-width: 0.5;
+      }
     </style>
+
+    <!-- The continuous abstract vector path forming the guardian silhouette -->
+    <path id="dragon-silhouette" d="M 750,380 C 500,420 200,380 150,300 C 100,200 150,80 250,60 C 350,40 400,100 350,140 C 300,180 280,180 300,150 C 350,80 500,20 650,80 C 800,140 850,250 750,300 C 650,350 500,300 550,250" />
   </defs>
 
   <!-- Solid, deep matte background. No gradients. No glow. -->
   <rect width="880" height="400" fill="#0A0A0C"/>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       THE ABSTRACT GUARDIAN
+       A single, continuous stroke wrapping the typography.
+       ═══════════════════════════════════════════════════════════ -->
+  <g>
+    <!-- The faint, almost invisible structural path -->
+    <use href="#dragon-silhouette" class="dragon-base" />
+    
+    <!-- The single travelling highlight (telemetry / electrical current) -->
+    <use href="#dragon-silhouette" class="dragon-highlight" />
+  </g>
 
   <!-- ═══════════════════════════════════════════════════════════
        THE STRUCTURE
@@ -57,11 +93,11 @@
     <!-- The Authentic Statement (Perfectly baseline-aligned with the Name) -->
     <text x="0" y="220" font-size="14" font-weight="300" fill="#D4D4D8" letter-spacing="0.01em">Building systems for threat detection.</text>
 
-    <!-- Essential Contact Information -->
+    <!-- Essential Contact Information (Removed GitHub) -->
     <g class="mono" font-size="10" fill="#52525B" letter-spacing="0.05em">
       <text x="0" y="260">khanfaizmumbai@gmail.com</text>
       <text x="170" y="260">·</text>
-      <text x="190" y="260">linkedin</text>
+      <text x="190" y="260">resume</text>
     </g>
   </g>
 
