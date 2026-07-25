@@ -1,0 +1,88 @@
+<svg width="880" height="190" viewBox="0 0 880 190" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&amp;family=Inter:wght@200;300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap');
+
+      * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+      .serif { font-family: 'Instrument Serif', Georgia, serif; }
+      .mono { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace; }
+
+      @keyframes idle-pulse {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 0.8; }
+      }
+      .idle { animation: idle-pulse 4s ease-in-out infinite; }
+
+      @keyframes sweep-close {
+        0% { transform: translateX(-200px); opacity: 0; }
+        10% { opacity: 0.3; }
+        90% { opacity: 0.3; }
+        100% { transform: translateX(880px); opacity: 0; }
+      }
+      .line-sweep { animation: sweep-close 12s ease-in-out infinite; }
+    </style>
+
+    <linearGradient id="c-top-edge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E8A84C" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#E8A84C" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#E8A84C" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="c-sweep-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E8A84C" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#E8A84C" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#E8A84C" stop-opacity="0"/>
+    </linearGradient>
+
+    <clipPath id="c-sweep-clip">
+      <rect x="60" y="28" width="760" height="6"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="880" height="190" fill="#08080A"/>
+  <rect width="880" height="1" fill="url(#c-top-edge)"/>
+
+  <!-- Divider with sweep -->
+  <line x1="60" y1="30" x2="820" y2="30" stroke="#FFFFFF" stroke-opacity="0.04"/>
+  <g clip-path="url(#c-sweep-clip)">
+    <rect x="0" y="30" width="200" height="1" fill="url(#c-sweep-grad)" class="line-sweep"/>
+  </g>
+
+  <!-- Corner marks -->
+  <g stroke="#1C1C22" stroke-width="1" opacity="0.6">
+    <line x1="56" y1="30" x2="64" y2="30"/><line x1="60" y1="26" x2="60" y2="34"/>
+    <line x1="816" y1="30" x2="824" y2="30"/><line x1="820" y1="26" x2="820" y2="34"/>
+  </g>
+
+  <!-- Module ID -->
+  <text x="820" y="20" text-anchor="end" class="mono" font-size="9" fill="#2A2A32" letter-spacing="0.12em">SYS—05</text>
+
+  <!-- System status indicator -->
+  <g transform="translate(60, 17)">
+    <circle cx="0" cy="0" r="3" fill="#5BE88A" class="idle"/>
+    <text x="12" y="3" class="mono" font-size="8" fill="#3A3A44" letter-spacing="0.15em">SYSTEM MONITORING</text>
+  </g>
+
+  <!-- Thesis line -->
+  <text x="60" y="82" class="serif" font-size="26" font-weight="400" fill="#E4E4E7" letter-spacing="-0.01em">Reducing mean time to detect.</text>
+
+  <!-- Contact -->
+  <g class="mono" font-size="9" fill="#44444D">
+    <text x="60" y="130">khanfaizmumbai@gmail.com</text>
+  </g>
+  <g class="mono" font-size="9" fill="#3A3A44">
+    <text x="60" y="150">linkedin.com/in/faiz-khan-b03a2a3a7</text>
+    <text x="395" y="150" fill="#2A2A32">·</text>
+    <text x="410" y="150">github.com/KhanFaiz5426</text>
+  </g>
+
+  <!-- Timestamp -->
+  <text x="820" y="170" text-anchor="end" class="mono" font-size="8" fill="#1C1C22" letter-spacing="0.15em">FK · 2026</text>
+
+  <!-- Idle monitoring indicator (bottom-right, tiny) -->
+  <g transform="translate(820, 150)">
+    <text x="-40" y="0" text-anchor="end" class="mono" font-size="7" fill="#1C1C22">idle ·· awaiting events</text>
+  </g>
+
+</svg>

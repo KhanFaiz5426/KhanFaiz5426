@@ -1,0 +1,156 @@
+<svg width="880" height="460" viewBox="0 0 880 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap');
+
+      * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace; }
+    </style>
+
+    <linearGradient id="b-top-edge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5B9EE8" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#5B9EE8" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#5B9EE8" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="b-vert-pulse" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#E8A84C" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#E8A84C" stop-opacity="0.4"/>
+      <stop offset="60%" stop-color="#E8A84C" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#E8A84C" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="880" height="460" fill="#08080A"/>
+  <rect width="880" height="1" fill="url(#b-top-edge)"/>
+
+  <!-- Corner marks -->
+  <g stroke="#1C1C22" stroke-width="1" opacity="0.6">
+    <line x1="56" y1="24" x2="64" y2="24"/><line x1="60" y1="20" x2="60" y2="28"/>
+    <line x1="816" y1="24" x2="824" y2="24"/><line x1="820" y1="20" x2="820" y2="28"/>
+    <line x1="56" y1="440" x2="64" y2="440"/><line x1="60" y1="436" x2="60" y2="444"/>
+    <line x1="816" y1="440" x2="824" y2="440"/><line x1="820" y1="436" x2="820" y2="444"/>
+  </g>
+
+  <!-- Module ID -->
+  <text x="820" y="50" text-anchor="end" class="mono" font-size="9" fill="#2A2A32" letter-spacing="0.12em">SYS—03</text>
+
+  <!-- Section label -->
+  <text x="60" y="50" class="mono" font-size="9" font-weight="500" fill="#3A3A44" letter-spacing="0.25em">SYSTEM ARCHITECTURE</text>
+
+  <!-- Subtitle -->
+  <text x="60" y="72" font-size="12" font-weight="300" fill="#44444D">Four processing layers. Each project maps to one or more.</text>
+
+  <!-- Revision annotation -->
+  <text x="820" y="72" text-anchor="end" class="mono" font-size="8" fill="#22222A" letter-spacing="0.1em">blueprint rev 3</text>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ARCHITECTURE LAYERS (bottom-up: INGEST → PARSE → DETECT → RESPOND)
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- Layer labels (left column) -->
+  <g class="mono" font-size="8" font-weight="500" fill="#3A3A44" letter-spacing="0.15em">
+    <text x="60" y="358" text-anchor="start">LAYER 1</text>
+    <text x="60" y="286" text-anchor="start">LAYER 2</text>
+    <text x="60" y="214" text-anchor="start">LAYER 3</text>
+    <text x="60" y="142" text-anchor="start">LAYER 4</text>
+  </g>
+
+  <!-- Layer type labels (left, smaller) -->
+  <g class="mono" font-size="7" fill="#2A2A32" letter-spacing="0.1em">
+    <text x="60" y="370">INGEST</text>
+    <text x="60" y="298">PARSE</text>
+    <text x="60" y="226">DETECT</text>
+    <text x="60" y="154">RESPOND</text>
+  </g>
+
+  <!-- Vertical separator -->
+  <line x1="130" y1="100" x2="130" y2="390" stroke="#FFFFFF" stroke-opacity="0.04"/>
+
+  <!-- Layer 1: INGEST (bottom, y: 340-386) -->
+  <rect x="148" y="340" width="660" height="48" rx="4" fill="#0C0C0F" stroke="#1C1C22"/>
+  <text x="168" y="361" font-size="11" font-weight="400" fill="#8B8B96">Linux Syslog</text>
+  <text x="300" y="361" font-size="11" font-weight="400" fill="#44444D">·</text>
+  <text x="320" y="361" font-size="11" font-weight="400" fill="#8B8B96">Windows EVTX</text>
+  <text x="460" y="361" font-size="11" font-weight="400" fill="#44444D">·</text>
+  <text x="480" y="361" font-size="11" font-weight="400" fill="#8B8B96">Raw Packets</text>
+  <text x="608" y="361" font-size="11" font-weight="400" fill="#44444D">·</text>
+  <text x="628" y="361" font-size="11" font-weight="400" fill="#8B8B96">USB HID</text>
+  <text x="168" y="378" class="mono" font-size="7" fill="#2A2A32">/var/log/auth.log · Security.evtx · AF_PACKET socket · USB subsystem</text>
+
+  <!-- Vertical connector 1→2 -->
+  <line x1="478" y1="340" x2="478" y2="318" stroke="#1C1C22" stroke-dasharray="4 4"/>
+  <polygon points="474,322 478,314 482,322" fill="#2A2A32"/>
+
+  <!-- Layer 2: PARSE (y: 268-314) -->
+  <rect x="148" y="268" width="660" height="48" rx="4" fill="#0C0C0F" stroke="#1C1C22"/>
+  <text x="168" y="289" font-size="11" font-weight="400" fill="#8B8B96">Regex Parser</text>
+  <text x="280" y="289" font-size="11" font-weight="400" fill="#44444D">·</text>
+  <text x="300" y="289" font-size="11" font-weight="400" fill="#8B8B96">EVTX BinXML Decoder</text>
+  <text x="500" y="289" font-size="11" font-weight="400" fill="#44444D">·</text>
+  <text x="520" y="289" font-size="11" font-weight="400" fill="#8B8B96">Protocol Decoder</text>
+  <text x="168" y="306" class="mono" font-size="7" fill="#2A2A32">field extraction · normalization · structured AuthEvent objects</text>
+
+  <!-- Vertical connector 2→3 -->
+  <line x1="478" y1="268" x2="478" y2="246" stroke="#1C1C22" stroke-dasharray="4 4"/>
+  <polygon points="474,250 478,242 482,250" fill="#2A2A32"/>
+
+  <!-- Layer 3: DETECT (y: 196-242) — highlighted -->
+  <rect x="148" y="196" width="660" height="48" rx="4" fill="#0C0C0F" stroke="#1C1C22"/>
+  <rect x="148" y="196" width="660" height="48" rx="4" fill="#E8A84C" opacity="0.025"/>
+  <rect x="148" y="196" width="2" height="48" rx="1" fill="#E8A84C" opacity="0.3"/>
+  <text x="168" y="217" font-size="11" font-weight="500" fill="#E4E4E7">Sigma Rules</text>
+  <text x="268" y="217" font-size="11" font-weight="400" fill="#44444D">·</text>
+  <text x="288" y="217" font-size="11" font-weight="500" fill="#E4E4E7">Correlation Engine</text>
+  <text x="448" y="217" font-size="11" font-weight="400" fill="#44444D">·</text>
+  <text x="468" y="217" font-size="11" font-weight="500" fill="#E4E4E7">MITRE Mapping</text>
+  <text x="168" y="234" class="mono" font-size="7" fill="#44444D">28 rules · stateful windows · evidence preservation · sliding time windows</text>
+
+  <!-- Vertical connector 3→4 -->
+  <line x1="478" y1="196" x2="478" y2="174" stroke="#1C1C22" stroke-dasharray="4 4"/>
+  <polygon points="474,178 478,170 482,178" fill="#2A2A32"/>
+
+  <!-- Layer 4: RESPOND (top, y: 124-170) -->
+  <rect x="148" y="124" width="660" height="48" rx="4" fill="#0C0C0F" stroke="#1C1C22"/>
+  <text x="168" y="145" font-size="11" font-weight="400" fill="#8B8B96">Alert Generation</text>
+  <text x="310" y="145" font-size="11" font-weight="400" fill="#44444D">·</text>
+  <text x="330" y="145" font-size="11" font-weight="400" fill="#8B8B96">nftables Block</text>
+  <text x="458" y="145" font-size="11" font-weight="400" fill="#44444D">·</text>
+  <text x="478" y="145" font-size="11" font-weight="400" fill="#8B8B96">USB Port Kill</text>
+  <text x="618" y="145" font-size="11" font-weight="400" fill="#44444D">·</text>
+  <text x="638" y="145" font-size="11" font-weight="400" fill="#8B8B96">JSON Report</text>
+  <text x="168" y="162" class="mono" font-size="7" fill="#2A2A32">severity classification · structured output · automated disruption</text>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       VERTICAL PULSE (data flowing upward through layers)
+       ═══════════════════════════════════════════════════════════ -->
+  <rect x="476" y="0" width="4" height="60" rx="2" fill="url(#b-vert-pulse)" opacity="0">
+    <animate attributeName="y" values="388;120" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0.25 0 0.25 1"/>
+    <animate attributeName="opacity" values="0;0.5;0.5;0" keyTimes="0;0.1;0.8;1" dur="6s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PROJECT MAPPING (bottom section)
+       ═══════════════════════════════════════════════════════════ -->
+
+  <line x1="60" y1="406" x2="820" y2="406" stroke="#FFFFFF" stroke-opacity="0.04"/>
+
+  <text x="60" y="428" class="mono" font-size="8" font-weight="500" fill="#3A3A44" letter-spacing="0.2em">PROJECT MAPPING</text>
+
+  <!-- Project → Layer mapping lines -->
+  <g class="mono" font-size="9" fill="#555560">
+    <text x="148" y="448">Linux Auth Analyzer</text>
+    <text x="340" y="448" fill="#2A2A32">────</text>
+    <text x="392" y="448" fill="#44444D">layers 1–4</text>
+    <text x="470" y="448" fill="#2A2A32">(syslog path)</text>
+  </g>
+
+  <g class="mono" font-size="9" fill="#555560">
+    <text x="560" y="428">Windows Event Analyzer</text>
+    <text x="560" y="448" fill="#2A2A32">──</text>
+    <text x="590" y="448" fill="#44444D">layers 1–3</text>
+    <text x="668" y="448" fill="#2A2A32">(evtx path)</text>
+  </g>
+
+</svg>

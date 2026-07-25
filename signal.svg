@@ -1,0 +1,143 @@
+<svg width="880" height="360" viewBox="0 0 880 360" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap');
+
+      * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace; }
+
+      @keyframes alert-flash {
+        0%, 84%, 100% { opacity: 0; }
+        86% { opacity: 0.2; }
+        88% { opacity: 0; }
+      }
+      .alert-zone { animation: alert-flash 12s ease-in-out infinite; }
+
+      @keyframes corr-label-in {
+        0%, 82% { opacity: 0; }
+        88%, 96% { opacity: 1; }
+        100% { opacity: 0; }
+      }
+      .corr-reveal { animation: corr-label-in 12s ease-in-out infinite; }
+    </style>
+
+    <linearGradient id="s-top-edge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E8A84C" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#E8A84C" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#E8A84C" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="880" height="360" fill="#08080A"/>
+  <rect width="880" height="1" fill="url(#s-top-edge)"/>
+
+  <!-- Corner marks -->
+  <g stroke="#1C1C22" stroke-width="1" opacity="0.6">
+    <line x1="56" y1="24" x2="64" y2="24"/><line x1="60" y1="20" x2="60" y2="28"/>
+    <line x1="816" y1="24" x2="824" y2="24"/><line x1="820" y1="20" x2="820" y2="28"/>
+    <line x1="56" y1="340" x2="64" y2="340"/><line x1="60" y1="336" x2="60" y2="344"/>
+    <line x1="816" y1="340" x2="824" y2="340"/><line x1="820" y1="336" x2="820" y2="344"/>
+  </g>
+
+  <!-- Module ID -->
+  <text x="820" y="48" text-anchor="end" class="mono" font-size="9" fill="#2A2A32" letter-spacing="0.12em">SYS—04</text>
+
+  <!-- Section label -->
+  <text x="60" y="48" class="mono" font-size="9" font-weight="500" fill="#3A3A44" letter-spacing="0.25em">EVENT CORRELATION</text>
+
+  <!-- Opening statement -->
+  <text x="60" y="100" font-size="20" font-weight="300" fill="#E4E4E7" letter-spacing="-0.01em">A single failed login is noise.</text>
+  <text x="60" y="130" font-size="20" font-weight="300" fill="#8B8B96" letter-spacing="-0.01em">A pattern of failures is signal.</text>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TIMELINE VISUALIZATION
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- Timeline base -->
+  <line x1="60" y1="200" x2="820" y2="200" stroke="#1C1C22"/>
+
+  <!-- Time labels -->
+  <text x="60" y="218" class="mono" font-size="7" fill="#2A2A32">t₀</text>
+  <text x="820" y="218" class="mono" font-size="7" fill="#2A2A32" text-anchor="end">t₆₀₀</text>
+  <text x="440" y="218" class="mono" font-size="7" fill="#2A2A32" text-anchor="middle">timeline (600s window)</text>
+
+  <!-- Threshold line -->
+  <line x1="60" y1="168" x2="820" y2="168" stroke="#E85B5B" stroke-opacity="0.15" stroke-dasharray="6 6"/>
+  <text x="820" y="164" class="mono" font-size="7" fill="#E85B5B" opacity="0.4" text-anchor="end">threshold: 3 failures</text>
+
+  <!-- ─── Noise cluster (left, sparse, 2 events) ─── -->
+
+  <!-- Event mark 1 -->
+  <line x1="120" y1="192" x2="120" y2="208" stroke="#44444D" stroke-width="1.5">
+    <animate attributeName="opacity" values="0;0.8;0.8;0.8" keyTimes="0;0.08;0.1;1" dur="12s" repeatCount="indefinite"/>
+  </line>
+
+  <!-- Event mark 2 -->
+  <line x1="195" y1="192" x2="195" y2="208" stroke="#44444D" stroke-width="1.5">
+    <animate attributeName="opacity" values="0;0;0.8;0.8" keyTimes="0;0.12;0.15;1" dur="12s" repeatCount="indefinite"/>
+  </line>
+
+  <!-- Noise label -->
+  <text x="158" y="240" text-anchor="middle" class="mono" font-size="8" fill="#3A3A44">
+    noise
+    <animate attributeName="opacity" values="0;0;0.6;0.6" keyTimes="0;0.16;0.2;1" dur="12s" repeatCount="indefinite"/>
+  </text>
+  <text x="158" y="254" text-anchor="middle" class="mono" font-size="7" fill="#2A2A32">
+    2 events · no correlation
+    <animate attributeName="opacity" values="0;0;0.5;0.5" keyTimes="0;0.20;0.24;1" dur="12s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- ─── Signal cluster (right, dense, 6 events) ─── -->
+
+  <!-- Events 3-8 (tight cluster) -->
+  <line x1="530" y1="190" x2="530" y2="210" stroke="#E8A84C" stroke-width="1.5" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.8;0.8" keyTimes="0;0.35;0.38;1" dur="12s" repeatCount="indefinite"/>
+  </line>
+  <line x1="560" y1="188" x2="560" y2="212" stroke="#E8A84C" stroke-width="1.5" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.8;0.8" keyTimes="0;0.42;0.45;1" dur="12s" repeatCount="indefinite"/>
+  </line>
+  <line x1="585" y1="186" x2="585" y2="214" stroke="#E8A84C" stroke-width="1.5" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.8;0.8" keyTimes="0;0.49;0.52;1" dur="12s" repeatCount="indefinite"/>
+  </line>
+  <line x1="608" y1="184" x2="608" y2="216" stroke="#E8A84C" stroke-width="1.5" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.8;0.8" keyTimes="0;0.56;0.59;1" dur="12s" repeatCount="indefinite"/>
+  </line>
+  <line x1="628" y1="182" x2="628" y2="218" stroke="#E8A84C" stroke-width="1.5" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.8;0.8" keyTimes="0;0.63;0.66;1" dur="12s" repeatCount="indefinite"/>
+  </line>
+
+  <!-- Event 9: the successful login (green, triggers correlation) -->
+  <line x1="658" y1="178" x2="658" y2="222" stroke="#5BE88A" stroke-width="2" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.9;0.9" keyTimes="0;0.73;0.76;1" dur="12s" repeatCount="indefinite"/>
+  </line>
+
+  <!-- Threshold breach highlight zone -->
+  <rect x="520" y="165" width="150" height="58" rx="4" fill="#E85B5B" class="alert-zone"/>
+
+  <!-- Breach marker line connecting cluster to threshold -->
+  <line x1="628" y1="182" x2="628" y2="168" stroke="#E85B5B" stroke-opacity="0" stroke-width="1" stroke-dasharray="3 2">
+    <animate attributeName="stroke-opacity" values="0;0;0.4;0.4;0" keyTimes="0;0.76;0.80;0.94;1" dur="12s" repeatCount="indefinite"/>
+  </line>
+
+  <!-- ─── Correlation triggered (reveal after breach) ─── -->
+
+  <!-- Alert box -->
+  <g class="corr-reveal">
+    <rect x="520" y="258" width="290" height="72" rx="4" fill="#0C0C0F" stroke="#E85B5B" stroke-opacity="0.3"/>
+    <rect x="520" y="258" width="2" height="72" rx="1" fill="#E85B5B" opacity="0.5"/>
+
+    <!-- Alert content -->
+    <text x="540" y="278" class="mono" font-size="9" font-weight="500" fill="#E85B5B" letter-spacing="0.05em">⚠ CORR-001 TRIGGERED</text>
+    <text x="540" y="296" class="mono" font-size="8" fill="#8B8B96">Successful Login After Failed Attempts</text>
+    <text x="540" y="312" class="mono" font-size="7" fill="#44444D">5 failures → 1 success · window: 600s · severity: high</text>
+    <text x="540" y="324" class="mono" font-size="7" fill="#44444D">evidence: 6 AuthEvents preserved · MITRE: Valid Accounts</text>
+  </g>
+
+  <!-- Signal label -->
+  <text x="594" y="240" text-anchor="middle" class="mono" font-size="8" fill="#E8A84C" opacity="0">
+    signal detected
+    <animate attributeName="opacity" values="0;0;0.7;0.7;0" keyTimes="0;0.76;0.80;0.94;1" dur="12s" repeatCount="indefinite"/>
+  </text>
+
+</svg>
