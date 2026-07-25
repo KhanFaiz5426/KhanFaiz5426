@@ -1,0 +1,71 @@
+<svg width="880" height="480" viewBox="0 0 880 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@300;400;500&amp;display=swap');
+
+      * { font-family: 'Inter', -apple-system, sans-serif; }
+      .serif { font-family: 'Instrument Serif', Georgia, serif; }
+
+      @keyframes slow-fade {
+        0%, 100% { opacity: 0.1; }
+        50% { opacity: 0.4; }
+      }
+      .ambient-glow { animation: slow-fade 8s ease-in-out infinite; }
+
+      @keyframes sweep-line {
+        0% { stroke-dashoffset: 880; }
+        100% { stroke-dashoffset: -880; }
+      }
+      .telemetry-sweep {
+        stroke-dasharray: 880;
+        animation: sweep-line 15s linear infinite;
+      }
+    </style>
+
+    <!-- Deep premium background gradient -->
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#18181E" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#0A0A0C" stop-opacity="1"/>
+    </radialGradient>
+
+    <!-- Pale silver accent gradient for sweep -->
+    <linearGradient id="silver-sweep" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E4E4E7" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#E4E4E7" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#E4E4E7" stop-opacity="0.3"/>
+      <stop offset="80%" stop-color="#E4E4E7" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#E4E4E7" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Base background -->
+  <rect width="880" height="480" fill="url(#bg-glow)"/>
+
+  <!-- Subtle ambient glow in center -->
+  <circle cx="440" cy="240" r="300" fill="#E4E4E7" class="ambient-glow" opacity="0.1" filter="blur(60px)"/>
+
+  <!-- Top hairline accent -->
+  <rect width="880" height="1" fill="#E4E4E7" opacity="0.05"/>
+
+  <!-- Very subtle background telemetry lines (supporting element, not dominating) -->
+  <g opacity="0.15">
+    <line x1="0" y1="120" x2="880" y2="120" stroke="#FFFFFF" stroke-width="0.5" opacity="0.1"/>
+    <line x1="0" y1="360" x2="880" y2="360" stroke="#FFFFFF" stroke-width="0.5" opacity="0.1"/>
+    <!-- Animated sweeps on those lines -->
+    <line x1="0" y1="120" x2="880" y2="120" stroke="url(#silver-sweep)" stroke-width="1" class="telemetry-sweep"/>
+    <line x1="0" y1="360" x2="880" y2="360" stroke="url(#silver-sweep)" stroke-width="1" class="telemetry-sweep" style="animation-delay: -7s; animation-duration: 20s;"/>
+  </g>
+
+  <!-- Typography Centerpiece -->
+  <g transform="translate(440, 260)" text-anchor="middle">
+    <!-- Role (Small, tracked out) -->
+    <text y="-90" font-size="11" font-weight="400" fill="#8B8B96" letter-spacing="0.3em">DETECTION ENGINEER</text>
+
+    <!-- Name (Massive, elegant serif) -->
+    <text y="0" class="serif" font-size="110" font-weight="400" fill="#F4F4F5" letter-spacing="-0.02em">Faiz Khan.</text>
+
+    <!-- Subtitle (Clean, focused) -->
+    <text y="60" font-size="16" font-weight="300" fill="#A1A1AA" letter-spacing="0.02em">Building systems that turn raw telemetry into detections.</text>
+  </g>
+
+</svg>
